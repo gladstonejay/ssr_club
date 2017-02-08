@@ -1,0 +1,16 @@
+*.class
+*.DS_Store
+*.lock
+*.swp
+.settings
+target
+bin
+.classpath
+.project
+.idea
+*.eml
+*.iml
+.build
+/target/
+/catalina.base_IS_UNDEFINED/
+/.settings/
