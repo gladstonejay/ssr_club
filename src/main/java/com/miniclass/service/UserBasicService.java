@@ -33,15 +33,6 @@ public interface UserBasicService {
 
     public int isRecorded(UserRecord userRecord);
 
-    //用户积分更新操作
-    public int updateUserScore(String userId);
-
-    public int updateUserScoreAutumn(String userId);
-
-    public int updateUserScoreWinter(String userId);
-
-    public int updateUserScoreSpring(String userId);
-
     public int insertUserRecord(UserRecord userRecord);
 
     public int getUserRecordCount(String userId);

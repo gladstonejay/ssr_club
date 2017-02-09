@@ -130,15 +130,15 @@ public class MyController extends KaptchaExtend {
             e.printStackTrace();
         }
         UserShowInfoVo userShowInfoVo = new UserShowInfoVo();
-        Integer score = userBasic.getScore();
+        //Integer score = userBasic.getScore();
         try {
             userShowInfoVo.setCount(this.userBasicService.getUserRecordCount(userId));
             userShowInfoVo.setExamCount(this.userBasicService.getUserExamCount(userId));
         }catch (Exception e){
             e.printStackTrace();
         }
-        userShowInfoVo.setScore(score);
-        userShowInfoVo.setLevel((score - score % 100) / 100 + 1);
+       //userShowInfoVo.setScore(score);
+        //userShowInfoVo.setLevel((score - score % 100) / 100 + 1);
         userShowInfoVo.setUserNickName(userBasic.getUserNname());
         userShowInfoVo.setUserType(UserTypeEnum.getName(Integer.parseInt(userBasic.getUserType())));
         userShowInfoVo.setUserTypeEnum(userBasic.getUserType());
@@ -287,7 +287,6 @@ public class MyController extends KaptchaExtend {
             userBasic.setUserNname((ubVo.getUserNname()));
             userBasic.setPassword(newstr);
             userBasic.setUserType("n");
-            userBasic.setScore(0);
             userBasic.setProvince(location[0]);
             userBasic.setCity(location[1]);
             if(location.length==3){

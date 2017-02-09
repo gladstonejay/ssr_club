@@ -19,19 +19,4 @@ public class RankServiceImpl implements RankService{
     @Resource
     private UserBasicDao userBasicDao;
 
-    public List<UserBasic> getUserRankByScore()
-    {
-        return this.userBasicDao.getUserRankByScore();
-    }
-
-    public List<UserBasic> getUserRankByScoreAutumn()
-    {
-        return this.userBasicDao.getUserRankByScoreAutumn();
-    }
-
-    public List<UserBasic> getUserRankByScoreWinter()
-    {
-        return this.userBasicDao.getUserRankByScoreWinter();
-    }
-
 }

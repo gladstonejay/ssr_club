@@ -13,8 +13,6 @@ public class UserBasic {
 
     private String password;
 
-    private Integer score;
-
     private Date registTime;
 
     private String province;
@@ -23,69 +21,9 @@ public class UserBasic {
 
     private String county;
 
+    private String location;
+
     private Integer status;
-
-    private Integer autumn;
-
-    private Integer winter;
-
-    public Integer getAutumn() {
-        return autumn;
-    }
-
-    public void setAutumn(Integer autumn) {
-        this.autumn = autumn;
-    }
-
-    public Integer getWinter() {
-        return winter;
-    }
-
-    public void setWinter(Integer winter) {
-        this.winter = winter;
-    }
-
-    public Integer getSpring() {
-        return spring;
-    }
-
-    public void setSpring(Integer spring) {
-        this.spring = spring;
-    }
-
-    private Integer spring;
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCounty() {
-        return county;
-    }
-
-    public void setCounty(String county) {
-        this.county = county;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
 
     public Integer getId() {
         return id;
@@ -127,14 +65,6 @@ public class UserBasic {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
     public Date getRegistTime() {
         return registTime;
     }
@@ -143,5 +73,43 @@ public class UserBasic {
         this.registTime = registTime;
     }
 
+    public String getProvince() {
+        return province;
+    }
 
+    public void setProvince(String province) {
+        this.province = province == null ? null : province.trim();
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county == null ? null : county.trim();
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location == null ? null : location.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 }

@@ -72,26 +72,6 @@ public class UserBasicServiceImpl implements UserBasicService{
         return this.userRecordDao.insert(userRecord);
     }
 
-    public int updateUserScore(String userId){
-
-        return this.userDao.updateUserScore(userId);
-    }
-
-    public int updateUserScoreAutumn(String userId){
-
-        return this.userDao.updateUserScoreAutumn(userId);
-    }
-
-    public int updateUserScoreWinter(String userId){
-
-        return this.userDao.updateUserScoreWinter(userId);
-    }
-
-    public int updateUserScoreSpring(String userId){
-
-        return this.userDao.updateUserScoreSpring(userId);
-    }
-
     public int isRecorded(UserRecord userRecord){
 
         return this.userRecordDao.isRecord(userRecord);

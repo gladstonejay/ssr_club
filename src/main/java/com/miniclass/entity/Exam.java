@@ -23,6 +23,8 @@ public class Exam {
 
     private String answerContext;
 
+    private Integer star;
+
     public Integer getId() {
         return id;
     }
@@ -103,7 +105,19 @@ public class Exam {
         this.answer = answer == null ? null : answer.trim();
     }
 
-    public String getAnswerContext() { return answerContext ;}
+    public String getAnswerContext() {
+        return answerContext;
+    }
 
-    public void setAnswerContext(String answerContext){ this.answerContext = answerContext;}
+    public void setAnswerContext(String answerContext) {
+        this.answerContext = answerContext == null ? null : answerContext.trim();
+    }
+
+    public Integer getStar() {
+        return star;
+    }
+
+    public void setStar(Integer star) {
+        this.star = star;
+    }
 }

@@ -1,5 +1,5 @@
 ﻿# Host: 127.0.0.1  (Version: 5.6.24)
-# Date: 2017-02-08 15:07:57
+# Date: 2017-02-09 19:02:02
 # Generator: MySQL-Front 5.3  (Build 4.214)
 
 /*!40101 SET NAMES utf8 */;
@@ -48,6 +48,7 @@ CREATE TABLE `exam` (
   `D` varchar(128) DEFAULT NULL,
   `answer` varchar(1) DEFAULT NULL,
   `answer_context` varchar(255) DEFAULT NULL,
+  `star` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -55,7 +56,7 @@ CREATE TABLE `exam` (
 # Data for table "exam"
 #
 
-INSERT INTO `exam` VALUES (1,1,'营养素专题',1,'1.三大产能营养素中1克能提供9Kcal热量的是？','A.蛋白质','B.碳水化合物','C.脂肪','D.无','C','C.脂肪'),(2,1,NULL,2,'2.维生素D属于以下类型营养素？','A.脂溶性维生素','B.水溶性维生素','C.水溶性维生素','D.水溶性维生素','B','B.水溶性维生素'),(3,1,NULL,3,'3.以下关于婴幼儿肠道发育特点的描述错误的是？','A.食管短而窄，括约肌功能不完善','B．胃容量小，消化酶发育不成熟','C．肠壁薄，通透性高，健康肠道菌群尚在构建中','D．肠动力足，消化吸收好','A','A.食管短而窄，括约肌功能不完善'),(4,1,NULL,4,'4. 下列缓解宝宝便秘方法，描述正确的是?','A. 如果是喂养配方奶粉，在两顿奶之间适当喂宝宝些水','B. 膳食纤维摄入不足可能会引起宝宝便秘，添加益生元能帮助宝宝缓解便秘','C. 可以在宝宝两餐奶间或者洗澡前给宝宝做腹部按摩，促进肠蠕动','D. 以上全对','D','D. 以上全对'),(5,1,NULL,5,'5. 关于益生元的描述以下错误的是？','A．母乳中含有130多种低聚糖，包括低聚半乳糖GOS，所以母乳的宝宝吸收消化更好','B．益生菌是益生元的食物，饮食中摄入益生菌的生长，肠道内益生元显著增多','C. 低聚果糖是益生元的一种，来源于天然植物','D．益生元是可溶性膳食纤维，进入肠道不被人体吸收，但是能被肠道内有益菌利用，促进有益菌生长','C','C.低内聚');
+INSERT INTO `exam` VALUES (1,1,'营养素专题',1,'1.三大产能营养素中1克能提供9Kcal热量的是？','A.蛋白质','B.碳水化合物','C.脂肪','D.无','C','C.脂肪',NULL),(2,1,NULL,2,'2.维生素D属于以下类型营养素？','A.脂溶性维生素','B.水溶性维生素','C.水溶性维生素','D.水溶性维生素','B','B.水溶性维生素',NULL),(3,1,NULL,3,'3.以下关于婴幼儿肠道发育特点的描述错误的是？','A.食管短而窄，括约肌功能不完善','B．胃容量小，消化酶发育不成熟','C．肠壁薄，通透性高，健康肠道菌群尚在构建中','D．肠动力足，消化吸收好','A','A.食管短而窄，括约肌功能不完善',NULL),(4,1,NULL,4,'4. 下列缓解宝宝便秘方法，描述正确的是?','A. 如果是喂养配方奶粉，在两顿奶之间适当喂宝宝些水','B. 膳食纤维摄入不足可能会引起宝宝便秘，添加益生元能帮助宝宝缓解便秘','C. 可以在宝宝两餐奶间或者洗澡前给宝宝做腹部按摩，促进肠蠕动','D. 以上全对','D','D. 以上全对',NULL),(5,1,NULL,5,'5. 关于益生元的描述以下错误的是？','A．母乳中含有130多种低聚糖，包括低聚半乳糖GOS，所以母乳的宝宝吸收消化更好','B．益生菌是益生元的食物，饮食中摄入益生菌的生长，肠道内益生元显著增多','C. 低聚果糖是益生元的一种，来源于天然植物','D．益生元是可溶性膳食纤维，进入肠道不被人体吸收，但是能被肠道内有益菌利用，促进有益菌生长','C','C.低内聚',NULL);
 
 #
 # Structure for table "question_answer"
@@ -85,18 +86,15 @@ INSERT INTO `question_answer` VALUES (1,1,'第一篇','weixin','2016-04-20 16:59
 DROP TABLE IF EXISTS `user_basic`;
 CREATE TABLE `user_basic` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(32) DEFAULT NULL,
-  `user_nname` varchar(255) DEFAULT NULL,
-  `user_type` varchar(1) DEFAULT '1' COMMENT '0:管理员; 1：店员； 2：店主； 3：销售； 4 ：经销商；',
-  `password` varchar(255) DEFAULT NULL,
-  `score` int(11) DEFAULT '0' COMMENT '个人总积分',
-  `autumn` int(11) DEFAULT '0' COMMENT '16第三季度积分',
-  `winter` int(11) DEFAULT '0' COMMENT '16第四季度积分',
-  `spring` int(11) DEFAULT '0' COMMENT '17年第一季度积分',
+  `user_id` varchar(32) NOT NULL DEFAULT '',
+  `user_nname` varchar(255) NOT NULL DEFAULT '',
+  `user_type` varchar(1) NOT NULL DEFAULT '1' COMMENT '0:管理员; 1：店员； 2：店主； 3：销售； 4 ：经销商；',
+  `password` varchar(255) NOT NULL DEFAULT '',
   `regist_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `province` varchar(32) DEFAULT NULL,
   `city` varchar(32) DEFAULT NULL,
   `county` varchar(32) DEFAULT NULL,
+  `location` varchar(32) DEFAULT NULL,
   `status` int(1) DEFAULT '0' COMMENT '0为正常；1为黑名单',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
@@ -105,7 +103,7 @@ CREATE TABLE `user_basic` (
 # Data for table "user_basic"
 #
 
-INSERT INTO `user_basic` VALUES (3,'13811111111','gladstone','1','e10adc3949ba59abbe56e057f20f883e',1063,540,120,70,'2017-02-08 15:04:12','黑龙江','哈尔滨','道里区',0),(22,'13811111112','gladstone2','1','e10adc3949ba59abbe56e057f20f883e',21,100,30,0,'2017-01-18 11:15:21',NULL,NULL,NULL,0),(23,'13811111113','gladstone3','1','b02f774f224e881e70f928d98bd11f0a',100,20,60,0,'2016-12-13 16:28:07',NULL,NULL,NULL,1),(29,'13811111119','gladstone9','1','b02f774f224e881e70f928d98bd11f0a',50,30,50,0,'2016-12-13 16:28:08','黑龙江','哈尔滨','道里区',0);
+INSERT INTO `user_basic` VALUES (3,'13811111111','gladstone','1','e10adc3949ba59abbe56e057f20f883e','2017-02-09 17:53:03','黑龙江','哈尔滨','道里区',NULL,0),(22,'13811111112','gladstone2','1','e10adc3949ba59abbe56e057f20f883e','2017-01-18 11:15:21',NULL,NULL,NULL,NULL,0),(23,'13811111113','gladstone3','1','b02f774f224e881e70f928d98bd11f0a','2016-12-13 16:28:07',NULL,NULL,NULL,NULL,1),(29,'13811111119','gladstone9','1','b02f774f224e881e70f928d98bd11f0a','2016-12-13 16:28:08','黑龙江','哈尔滨','道里区',NULL,0);
 
 #
 # Structure for table "user_record"
@@ -121,13 +119,13 @@ CREATE TABLE `user_record` (
   `date` date DEFAULT NULL,
   `month` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "user_record"
 #
 
-INSERT INTO `user_record` VALUES (1,'13811111111','video',1,NULL,'2016-04-18',NULL),(2,'13811111111','video',2,NULL,'2016-04-18',NULL),(3,'13811111111','video',3,NULL,'2016-04-18',NULL),(4,'13811111111','video',1,NULL,'2016-04-19',NULL),(5,'13811111111','video',3,NULL,'2016-04-19',NULL),(13,'13811111111','video',1,NULL,'2016-04-20',NULL),(14,'13811111111','video',2,NULL,'2016-04-20',NULL),(15,'13811111111','video',3,NULL,'2016-04-20',NULL),(16,'13811111111','weixin',1,NULL,'2016-04-20',NULL),(17,'13811111111','weixin',2,NULL,'2016-04-20',NULL),(18,'13811111111','ppt',1,NULL,'2016-04-20',NULL),(19,'13811111111','video',1,NULL,'2016-04-21',NULL),(20,'13811111111','video',2,NULL,'2016-04-21',NULL),(21,'13811111111','ppt',1,NULL,'2016-04-21',NULL),(22,'13811111111','weixin',2,NULL,'2016-04-21',NULL),(23,'13811111111','weixin',1,NULL,'2016-04-21',NULL),(24,'13811111111','video',7,NULL,'2016-04-21',NULL),(25,'13811111111','video',1,NULL,'2016-04-22',NULL),(26,'13811111111','video',2,NULL,'2016-04-22',NULL),(27,'13811111111','video',5,NULL,'2016-04-22',NULL),(28,'13811111111','weixin',2,NULL,'2016-04-24',NULL),(29,'13811111111','weixin',1,NULL,'2016-04-24',NULL),(30,'13811111111','video',2,0,'2016-04-25',NULL),(32,'13811111111','exam',1,20,'2016-04-28',NULL),(33,'13811111111','video',1,0,'2016-05-10',NULL),(34,'13811111111','video',2,0,'2016-05-10',NULL),(35,'13811111111','video',1,0,'2016-06-16',NULL),(36,'13811111118','video',1,0,'2016-06-16',NULL),(37,'13811111111','video',6,0,'2016-06-16',NULL),(38,'13811111111','video',1,0,'2016-06-17',NULL),(39,'13811111111','video',2,0,'2016-06-17',6),(40,'13811111111','ppt',1,0,'2016-06-17',6),(41,'13811111111','weixin',1,0,'2016-06-17',6),(42,'13811111111','exam',1,0,'2016-06-17',6),(43,'13811111112','video',1,0,'2016-06-17',6),(44,'13811111119','video',1,0,'2016-06-17',6),(45,'13811111119','exam',1,20,'2016-06-17',6),(46,'13811111119','ppt',1,0,'2016-06-17',6),(47,'13811111119','weixin',1,0,'2016-06-17',6),(48,'13811111119','weixin',2,0,'2016-06-17',6),(49,'13811111111','ppt',1,0,'2016-07-18',7),(50,'13811111111','video',1,0,'2016-07-18',7),(51,'13811111111','weixin',2,0,'2016-07-18',7),(52,'13811111111','weixin',1,0,'2016-07-18',7),(53,'13811111111','ppt',1,0,'2016-07-19',7),(54,'13811111111','ppt',1,0,'2016-07-20',7),(55,'13811111111','ppt',1,0,'2016-07-21',7),(56,'13811111111','weixin',2,0,'2016-07-21',7),(57,'13811111111','ppt',1,0,'2016-07-22',7),(58,'13811111111','ppt',1,0,'2016-07-25',7),(59,'13811111111','weixin',2,0,'2016-07-25',7),(60,'13811111111','weixin',1,0,'2016-07-25',7),(61,'13811111111','video',2,0,'2016-07-25',7),(62,'13811111111','video',1,0,'2016-07-25',7),(63,'13811111111','exam',1,0,'2016-07-25',7),(64,'13811111111','ppt',1,0,'2016-07-26',7),(65,'13811111111','ppt',1,0,'2016-08-15',8),(66,'13811111111','weixin',2,0,'2016-08-15',8),(67,'13811111111','video',2,0,'2016-11-23',11),(68,'13811111111','ppt',1,0,'2016-11-23',11),(69,'13811111111','weixin',1,0,'2016-11-23',11),(70,'13811111111','weixin',2,0,'2016-11-23',11),(71,'13811111111','weixin',1,0,'2016-12-29',12),(72,'13811111111','exam',1,0,'2016-12-29',12),(73,'13811111111','video',1,0,'2016-12-29',12),(74,'13811111111','ppt',1,0,'2016-12-29',12),(75,'13811111111','weixin',2,0,'2016-12-29',12),(76,'13811111111','video',2,0,'2016-12-29',12),(77,'13811111111','weixin',1,0,'2017-01-03',1),(78,'13811111111','weixin',1,0,'2017-01-16',1),(79,'13811111111','exam',1,40,'2017-02-07',2),(80,'13811111111','video',1,0,'2017-02-07',2),(81,'13811111111','video',2,0,'2017-02-07',2),(82,'13811111111','video',1,0,'2017-02-08',2),(83,'13811111111','video',2,0,'2017-02-08',2);
+INSERT INTO `user_record` VALUES (91,'13811111111','video',2,0,'2017-02-09',2);
 
 #
 # Structure for table "user_score_rank"
@@ -137,18 +135,19 @@ DROP TABLE IF EXISTS `user_score_rank`;
 CREATE TABLE `user_score_rank` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(32) NOT NULL,
-  `year` int(4) NOT NULL,
+  `year` int(4) DEFAULT '0',
   `season` int(1) DEFAULT '0',
-  `month` int(2) NOT NULL,
-  `score` int(11) NOT NULL DEFAULT '0' COMMENT '每月积分',
-  `total_score` int(11) DEFAULT '0' COMMENT '总积分',
+  `month` int(2) DEFAULT '0',
+  `score` int(11) DEFAULT '0' COMMENT '每月积分',
+  `total_score` int(11) NOT NULL DEFAULT '0' COMMENT '总积分',
   PRIMARY KEY (`id`,`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "user_score_rank"
 #
 
+INSERT INTO `user_score_rank` VALUES (2,'13811111111',0,0,0,0,30);
 
 #
 # Structure for table "user_score_record"
@@ -165,13 +164,13 @@ CREATE TABLE `user_score_record` (
   `score` int(11) NOT NULL DEFAULT '0',
   `type` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "user_score_record"
 #
 
-INSERT INTO `user_score_record` VALUES (1,'13811111111','20170207',2017,1,2,10,'video'),(2,'13811111111','20170208',2017,1,2,10,'video');
+INSERT INTO `user_score_record` VALUES (10,'13811111111','20170209',2017,1,2,10,'video');
 
 #
 # Structure for table "video_info"

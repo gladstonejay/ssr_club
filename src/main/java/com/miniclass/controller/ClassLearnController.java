@@ -156,6 +156,11 @@ public class ClassLearnController {
         return model;
     }
 
+    /**
+     * 一节课
+     * @param request
+     * @return
+     */
     @RequestMapping(value="/showOneClass",method = RequestMethod.GET)
     public ModelAndView showOneClass(HttpServletRequest request)
     {
@@ -192,16 +197,8 @@ public class ClassLearnController {
         Integer count = this.userService.isRecorded(userRecord);
         if (count == 0){
             this.userService.insertUserRecord(userRecord);
-            this.userService.updateUserScore(userId);
-            if(month == 6 || month == 7 ||  month == 8 ||month == 9){
-                this.userService.updateUserScoreAutumn(userId);
-            } else if(month == 10 ||  month == 11 ||month == 12){
-                this.userService.updateUserScoreWinter(userId);
-            }else{
-                this.userService.updateUserScoreSpring(userId);
-            }
+            scoreService.addTScoreByClass(userId);
         }
-        scoreService.addTScoreByClass(userId);
         model.addObject("videoInfo",videoInfo);
 
         return model;
@@ -251,14 +248,7 @@ public class ClassLearnController {
         Integer count = this.userService.isRecorded(userRecord);
         if (count == 0){
             this.userService.insertUserRecord(userRecord);
-            this.userService.updateUserScore(userId);
-            if(month == 6 || month == 7 ||  month == 8 ||month == 9){
-                this.userService.updateUserScoreAutumn(userId);
-            } else if(month == 10 ||  month == 11 ||month == 12){
-                this.userService.updateUserScoreWinter(userId);
-            }else{
-                this.userService.updateUserScoreSpring(userId);
-            }
+            scoreService.addTScoreByLearn(userId);
         }
 
         return modelAndView;
@@ -307,7 +297,6 @@ public class ClassLearnController {
                 userArray[i] = request.getParameter(ident);
             }
         }
-
         List<Exam> answer = this.reviewService.getOneExam(id);
         for(Exam exam:answer){
             answerList.add(exam.getAnswer());
@@ -324,9 +313,7 @@ public class ClassLearnController {
                 checkArray.add(Integer.toString(i+1));
             }
         }
-
         if (score != 100 ) {
-
             wrong +=  "您的得分最后为 :" + score + "," ;
             for (String tmp : checkArray) {
 
@@ -338,7 +325,6 @@ public class ClassLearnController {
         else {
             modelAndView.addObject("result", right);
         }
-
         HttpSession session = request.getSession();
         String userId1 = new String();
         userId1 = (String)session.getAttribute(CURRENT_USER);
@@ -367,14 +353,7 @@ public class ClassLearnController {
         Integer count = this.userService.isRecorded(userRecord);
         if (count == 0){
             this.userService.insertUserRecord(userRecord);
-            this.userService.updateUserScore(userId);
-            if(month == 6 || month == 7 ||  month == 8 ||month == 9){
-                this.userService.updateUserScoreAutumn(userId);
-            } else if(month == 10 ||  month == 11 ||month == 12){
-                this.userService.updateUserScoreWinter(userId);
-            }else{
-                this.userService.updateUserScoreSpring(userId);
-            }
+            scoreService.addTScoreByExam(userId);
         }
         return modelAndView;
     }

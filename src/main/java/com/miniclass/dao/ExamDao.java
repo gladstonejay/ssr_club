@@ -25,5 +25,4 @@ public interface ExamDao {
     public List<Exam> getOneExam(Integer id);
 
     public Exam getOneExamContext(@Param("orderId")Integer order_id, @Param("itemId")Integer item_id);
-
 }
