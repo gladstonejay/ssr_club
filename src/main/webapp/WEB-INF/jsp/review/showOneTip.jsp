@@ -19,11 +19,13 @@
 <div class="page-group">
     <div class="page page-current">
         <header class="bar bar-nav">
-            <h1 class='title'>微信答疑第${weixin.itemId}篇: ${weixin.title}</h1>
+            <h1 class='title'>${weixin.title}</h1>
         </header>
         <%@ include file="../common/bottom.jsp" %>
         <div class="content">
-            <div class="content-padded"><p> ${weixin.context} </p></div>
+            <div class="item-media">
+                <img class='card-cover' src="../../../static/imags/content/content-weixin-${weixin.itemId}.png" >
+            </div>
         </div>
     </div>
 </div>

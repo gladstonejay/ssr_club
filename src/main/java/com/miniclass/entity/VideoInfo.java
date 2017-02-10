@@ -9,6 +9,8 @@ public class VideoInfo {
 
     private String title;
 
+    private Integer month;
+
     private String videoId;
 
     private String type;
@@ -17,15 +19,9 @@ public class VideoInfo {
 
     private Date timestamp;
 
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
     private Integer status;
+
+    private String writer;
 
     public Integer getId() {
         return id;
@@ -49,6 +45,14 @@ public class VideoInfo {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
     }
 
     public String getVideoId() {
@@ -81,5 +85,21 @@ public class VideoInfo {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer == null ? null : writer.trim();
     }
 }

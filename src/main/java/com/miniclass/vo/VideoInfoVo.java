@@ -27,6 +27,37 @@ public class VideoInfoVo  extends Vo  {
 
     private Integer userDone;
 
+    private String writer;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    private Integer status;
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
+    }
+
+    private Integer month;
+
+
     public Integer getId() {
         return id;
     }

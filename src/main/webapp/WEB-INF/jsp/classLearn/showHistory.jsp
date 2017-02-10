@@ -24,29 +24,13 @@
         <%@ include file="../common/bottom.jsp" %>
         <div class="content">
 
-            <div class="card demo-card-header-pic">
-                <div valign="bottom" class="card-header color-white no-border no-padding">
-                    <img class='card-cover' src="../../../static/imags/classLearn/headP.png" alt="">
-                </div>
-                <div class="card-content">
-                    <%--<div class="card-content-inner" style="text-align: center">--%>
-                        <%--<p>各位母婴店的销售精英们：大家好</p>--%>
-                        <%--<p>母婴营养达人微课堂开课啦！</p>--%>
-                        <%--<p>本课程旨在帮您：</p>--%>
-                        <%--<p>&nbsp;&nbsp;&nbsp;&nbsp;高效轻松的学习，让您的话术更专业</p>--%>
-                        <%--<p>&nbsp;&nbsp;&nbsp;&nbsp;专业营养师授课，令您的知识更系统</p>--%>
-                        <%--<p>&nbsp;&nbsp;&nbsp;&nbsp;系统的课程回看，使您的学习更方便</p>--%>
-                    <%--</div>--%>
-                </div>
-            </div>
-
             <c:forEach items="${videoInfoList}" var="item" varStatus="xh">
-                <c:if test="${item.orderId=='1'}">
-                    <p style="text-align: center"><img src="../../../static/imags/month/6.0.png"  width="163" ></p>
-                </c:if>
-                <c:if test="${item.orderId=='3' || item.orderId=='7' || item.orderId=='11' ||item.orderId=='15' ||item.orderId=='19' ||item.orderId=='23' ||item.orderId=='27'}">
-                    <p style="text-align: center"><img src="../../../static/imags/month/${((item.orderId-3)/4+7)}.png"  width="163" ></p>
-                </c:if>
+                <%--<c:if test="${item.orderId=='1'}">--%>
+                    <%--<p style="text-align: center"><img src="../../../static/imags/month/6.0.png"  width="163" ></p>--%>
+                <%--</c:if>--%>
+                <%--<c:if test="${item.orderId=='3' || item.orderId=='7' || item.orderId=='11' ||item.orderId=='15' ||item.orderId=='19' ||item.orderId=='23' ||item.orderId=='27'}">--%>
+                    <%--<p style="text-align: center"><img src="../../../static/imags/month/${((item.orderId-3)/4+7)}.png"  width="163" ></p>--%>
+                <%--</c:if>--%>
                 <div class="card">
                     <div class="card-content">
                         <div class="list-block media-list">
@@ -60,24 +44,25 @@
                                         <a href="#" external class="item-link item-content">
                                             </c:otherwise>
                                             </c:choose>
-                                            <div class="item-media"><i class="icon icon-f7"></i></div>
                                             <div class="item-media">
-                                                    <%--<img src="../../../static/imags/video${item.orderId}.png" width="44">--%>
-                                                <img src="../../../static/imags/video1.png" width="44">
+                                                <img src="../../../static/imags/video${item.orderId}.png" width="44">
                                             </div>
                                             <div class="item-inner">
                                                 <div class="item-title-row">
-                                                    <div class="item-title">第${item.orderId}讲</div>
+                                                    <div >${item.title}</div>
                                                 </div>
-                                                <div class="item-subtitle">${item.title}</div>
+                                                <div class="item-subtitle"><img src="../../../static/imags/classLearn/writer.png" width="12"> ：${item.writer}</div>
+                                                <div class="item-subtitle">
+                                                    <img src="../../../static/imags/heroShare/time.png" width="16"> <span>${item.timestamp}</span>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <img src="../../../static/imags/classLearn/class_done.png" width="48">
+                                                </div>
                                             </div>
                                         </a>
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <span>${item.timestamp}</span>
                     </div>
                 </div>
             </c:forEach>

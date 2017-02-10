@@ -25,6 +25,8 @@ public class Exam {
 
     private Integer star;
 
+    private Integer type;
+
     public Integer getId() {
         return id;
     }
@@ -119,5 +121,13 @@ public class Exam {
 
     public void setStar(Integer star) {
         this.star = star;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

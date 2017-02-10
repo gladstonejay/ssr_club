@@ -249,6 +249,41 @@ public class MyController extends KaptchaExtend {
         }
     }
 
+    /**
+     * 选择区域验证
+     */
+    @RequestMapping(value = "/typeCheck")
+    public ModelAndView typeCheck(HttpServletRequest request){
+
+        String type = request.getParameter("type");
+        ModelAndView error = new ModelAndView("/my/chooseType");
+        ModelAndView location = new ModelAndView("/my/chooseLocation");
+        ModelAndView regist = new ModelAndView("/my/regist");
+        log.info("type is " + type);
+
+
+        if (type.equals(null) || type.length() == 0) {
+            error.addObject("errorNname"," 请选择身份");
+
+            return error;
+        }
+        else{
+            if ( type.equals("店员") || type.equals("店主")){
+                log.info("here");
+                location.addObject("location",location);
+
+                return location;
+            }
+            else{
+                log.info("there");
+                regist.addObject("regist",regist);
+
+                return regist;
+            }
+
+        }
+    }
+
 
     /**
      * 注册验证及插入数据

@@ -42,14 +42,14 @@
                             <ul>
                                 <li >
                                     <a href="/heroCollection/showHeroDetail.j?id=${item.item}&type=${item.type}" external class="item-link item-content">
-                                        <div class="item-media">
-                                            <img src="../../../static/imags/content/content${item.type}-${item.item}.png" width="44" >
-                                        </div>
+                                        <%--<div class="item-media">--%>
+                                            <%--<img src="../../../static/imags/content/content${item.type}-${item.item}.png" width="44" >--%>
+                                        <%--</div>--%>
                                         <div class="item-inner">
                                             <div class="item-title-row">
-                                                <div class="item-title">${item.title}</div>
+                                                <div ><h4>${item.title}</h4></div>
                                             </div>
-                                            <div class="item-subtitle">${item.subTitle}</div>
+                                            <%--<div class="item-subtitle">${item.subTitle}</div>--%>
                                         </div>
                                     </a>
                                 </li>

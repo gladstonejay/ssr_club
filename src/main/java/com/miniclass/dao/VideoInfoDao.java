@@ -7,7 +7,6 @@ import java.util.List;
 
 @Repository
 public interface VideoInfoDao {
-
     int deleteByPrimaryKey(Integer id);
 
     int insert(VideoInfo record);
@@ -16,13 +15,13 @@ public interface VideoInfoDao {
 
     VideoInfo selectByPrimaryKey(Integer id);
 
-    List<VideoInfo> selectAllVideo();
-
-    List<VideoInfo> selectAllDoneVideo();
-
     int updateByPrimaryKeySelective(VideoInfo record);
 
     int updateByPrimaryKey(VideoInfo record);
+
+    List<VideoInfo> selectAllVideo();
+
+    List<VideoInfo> selectAllDoneVideo();
 
     VideoInfo getVideoById(Integer videoId);
 }

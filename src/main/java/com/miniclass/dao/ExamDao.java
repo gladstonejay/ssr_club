@@ -20,9 +20,9 @@ public interface ExamDao {
 
     int updateByPrimaryKey(Exam record);
 
-    public List<Exam> getAllExam();
+    public List<Exam> getAllExam(@Param("type")Integer type);
 
-    public List<Exam> getOneExam(Integer id);
+    public List<Exam> getOneExam(@Param("orderId")Integer id, @Param("type")Integer type);
 
-    public Exam getOneExamContext(@Param("orderId")Integer order_id, @Param("itemId")Integer item_id);
+    public Exam getOneExamContext(@Param("orderId")Integer order_id, @Param("itemId")Integer item_id, @Param("type")Integer type);
 }

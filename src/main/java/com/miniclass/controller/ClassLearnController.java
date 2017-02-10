@@ -10,7 +10,9 @@ import com.miniclass.service.ScoreService;
 import com.miniclass.service.UserShareService;
 import com.miniclass.util.CommonFuncUtil;
 import com.miniclass.util.Constant;
+import com.miniclass.util.DateUtil;
 import com.miniclass.vo.VideoInfoVo;
+import com.sun.org.apache.xerces.internal.dom.PSVIDOMImplementationImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,11 +63,17 @@ public class ClassLearnController {
             VideoInfoVo videoInfoVo = null;
             for (VideoInfo videoInfo : videoInfoList) {
                 videoInfoVo = new VideoInfoVo(videoInfo);
+                videoInfoVo.setTimestamp(DateUtil.format(videoInfo.getTimestamp(),DateUtil.DATE_FORMAT_DAY));
+                videoInfoVo.setWriter(videoInfo.getWriter());
+                videoInfoVo.setStatus(videoInfo.getStatus());
+                model.addObject("month",videoInfo.getMonth());
                 videoInfoVos.add(videoInfoVo);
             }
-            List<Exam> resultExam = null;
+            List<Exam> resultExamBefore = null;
+            List<Exam> resultExamAfter = null;
             try{
-                resultExam = reviewService.getAllExam();
+                resultExamBefore = reviewService.getAllExam(1);
+                resultExamAfter = reviewService.getAllExam(2);
             }
             catch (Exception e){
                 log.error(e.getMessage());
@@ -78,7 +86,8 @@ public class ClassLearnController {
                 log.error(e.getMessage());
             }
 
-            model.addObject("examList", resultExam);
+            model.addObject("examListBefore", resultExamBefore);
+            model.addObject("examListAfter", resultExamAfter);
             model.addObject("weixinList", resultWeixin);
             model.addObject("videoInfoList", videoInfoVos);
 
@@ -109,11 +118,17 @@ public class ClassLearnController {
                 VideoInfoVo videoInfoVo = null;
                 for (VideoInfo videoInfo : videoInfoList) {
                     videoInfoVo = new VideoInfoVo(videoInfo);
+                    videoInfoVo.setTimestamp(DateUtil.format(videoInfo.getTimestamp(),DateUtil.DATE_FORMAT_DAY));
+                    videoInfoVo.setWriter(videoInfo.getWriter());
+                    videoInfoVo.setStatus(videoInfo.getStatus());
+                    model.addObject("month",videoInfo.getMonth());
                     videoInfoVos.add(videoInfoVo);
                 }
-                List<Exam> resultExam = null;
+                List<Exam> resultExamBefore = null;
+                List<Exam> resultExamAfter = null;
                 try{
-                    resultExam = reviewService.getAllExam();
+                    resultExamBefore = reviewService.getAllExam(1);
+                    resultExamAfter = reviewService.getAllExam(2);
                 }
                 catch (Exception e){
                     log.error(e.getMessage());
@@ -126,7 +141,8 @@ public class ClassLearnController {
                     log.error(e.getMessage());
                 }
 
-                model.addObject("examList", resultExam);
+                model.addObject("examListBefore", resultExamBefore);
+                model.addObject("examListAfter", resultExamAfter);
                 model.addObject("weixinList", resultWeixin);
                 model.addObject("videoInfoList", videoInfoVos);
 
@@ -148,6 +164,8 @@ public class ClassLearnController {
         VideoInfoVo videoInfoVo = null;
         for (VideoInfo videoInfo : videoInfoList) {
             videoInfoVo = new VideoInfoVo(videoInfo);
+            videoInfoVo.setTimestamp(DateUtil.format(videoInfo.getTimestamp(),DateUtil.DATE_FORMAT_DAY));
+            videoInfoVo.setWriter(videoInfo.getWriter());
             videoInfoVos.add(videoInfoVo);
         }
 
@@ -219,6 +237,7 @@ public class ClassLearnController {
 
         ModelAndView modelAndView = new ModelAndView("/review/showOneTip");
         modelAndView.addObject("weixin",weixin);
+        modelAndView.addObject("id",id);
 
         HttpSession session = request.getSession();
         String userId1 = new String();
@@ -265,11 +284,14 @@ public class ClassLearnController {
     {
 
         Integer id =Integer.parseInt( request.getParameter("id"));
-        List<Exam> exam = this.reviewService.getOneExam(id);
+        Integer type = Integer.parseInt( request.getParameter("type"));
+
+        List<Exam> exam = this.reviewService.getOneExam(id, type);
 
         ModelAndView modelAndView = new ModelAndView("/review/showOneExam");
         modelAndView.addObject("exam", exam);
         modelAndView.addObject("id", id);
+        modelAndView.addObject("type",type);
 
         return modelAndView;
     }
@@ -284,6 +306,7 @@ public class ClassLearnController {
     {
 
         Integer id =Integer.parseInt(request.getParameter("id"));
+        Integer type =Integer.parseInt(request.getParameter("type"));
         ModelAndView modelAndView = new ModelAndView("/review/examResult");
 
         String[] userArray = new String[]{"E","E","E","E","E"};
@@ -297,7 +320,7 @@ public class ClassLearnController {
                 userArray[i] = request.getParameter(ident);
             }
         }
-        List<Exam> answer = this.reviewService.getOneExam(id);
+        List<Exam> answer = this.reviewService.getOneExam(id,type);
         for(Exam exam:answer){
             answerList.add(exam.getAnswer());
         }
@@ -317,7 +340,7 @@ public class ClassLearnController {
             wrong +=  "您的得分最后为 :" + score + "," ;
             for (String tmp : checkArray) {
 
-                Exam exam = this.reviewService.getOneExamContext(id, Integer.parseInt(tmp));
+                Exam exam = this.reviewService.getOneExamContext(id, Integer.parseInt(tmp),type);
                 wrong += "<br>其中第" + tmp + "题" + exam.getContext() + "的答案为 ：<br>" + exam.getAnswerContext() + "; ";
             }
             modelAndView.addObject("result",wrong);

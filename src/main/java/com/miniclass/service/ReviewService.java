@@ -11,7 +11,7 @@ public interface ReviewService {
 
     public List<QuestionAnswer> getAllArticle(String type);
     public QuestionAnswer getOneArticle(Integer id, String type);
-    public List<Exam> getAllExam();
-    public List<Exam> getOneExam(Integer id);
-    public Exam getOneExamContext(Integer order_id , Integer item_id);
+    public List<Exam> getAllExam(Integer type);
+    public List<Exam> getOneExam(Integer id, Integer type);
+    public Exam getOneExamContext(Integer order_id , Integer item_id, Integer type);
 }

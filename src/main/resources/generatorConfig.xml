@@ -56,8 +56,8 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table tableName="exam"
-               domainObjectName="Exam"
+        <table tableName="video_info"
+               domainObjectName="VideoInfo"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"

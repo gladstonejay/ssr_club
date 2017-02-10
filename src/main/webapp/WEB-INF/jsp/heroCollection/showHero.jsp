@@ -41,6 +41,12 @@
             </div>
             <div class="tabs">
                 <div id="tab1" class="tab">
+                    <%--简介图--%>
+                    <div class="card demo-card-header-pic">
+                        <div valign="bottom" class="card-header color-white no-border no-padding">
+                            <img class='card-cover' src="../../../static/imags/shortIntro/warList.png" alt="">
+                        </div>
+                    </div>
                     <c:forEach items="${content4}" var="item" varStatus="xh">
                         <div class="card">
                             <div class="card-content">
@@ -53,12 +59,11 @@
                                                 </div>
                                                 <div class="item-inner">
                                                     <div class="item-title-row">
-                                                        <div class="item-title">${item.title}</div>
+                                                        <div ><h4>${item.title}</h4></div>
                                                     </div>
-                                                    <div class="item-subtitle">${item.subTitle}</div>
                                                     <br />
                                                     <div class="item-subtitle">
-                                                        <span>${item.createTime}</span>
+                                                        <img src="../../../static/imags/heroShare/time.png" width="16"> <span>${item.createTime}</span>
                                                     </div>
                                                 </div>
                                             </a>
@@ -73,6 +78,12 @@
                     </c:forEach>
                 </div>
                 <div id="tab2" class="tab active">
+                    <%--简介图--%>
+                    <div class="card demo-card-header-pic">
+                        <div valign="bottom" class="card-header color-white no-border no-padding">
+                            <img class='card-cover' src="../../../static/imags/shortIntro/hero.png" alt="">
+                        </div>
+                    </div>
                 <c:choose>
                     <c:when test="${userBasic.userType == '1' ||  userBasic.userType == '2'}">
                         <div class="card">

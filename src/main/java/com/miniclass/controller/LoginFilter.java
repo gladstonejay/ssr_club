@@ -54,7 +54,7 @@ public class LoginFilter extends BaseController implements Filter{
         }
         log.info("-------------filter---------------userid is " + userId);
         // url特殊处理：不放行url
-        if ( (url.contains("showOneClass.j") || url.endsWith("my.j") || url.contains("showOneTip.j") || url.contains("showOnePPT.j") || url.contains("showOneExam.j")) &&  (null == userId) ){
+        if ( (url.contains("showOneClass.j") || url.endsWith("my.j") || url.contains("showOneTip.j") || url.contains("showOnePPT.j") || url.contains("showShare.j") || url.contains("showHero.j") || url.contains("showOneExam.j")) &&  (null == userId) ){
 
             response.sendRedirect("/my/login.j");
         }

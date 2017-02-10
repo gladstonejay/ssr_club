@@ -31,18 +31,18 @@ public class ReviewServiceImpl implements ReviewService{
 
         return this.userDao.getOneArticle(id,type);
     }
-    public List<Exam> getAllExam(){
+    public List<Exam> getAllExam(Integer type){
 
-        return this.examDao.getAllExam();
+        return this.examDao.getAllExam(type);
     }
 
-    public List<Exam> getOneExam(Integer id){
+    public List<Exam> getOneExam(Integer id, Integer type){
 
-        return this.examDao.getOneExam(id);
+        return this.examDao.getOneExam(id, type);
     }
 
-    public Exam getOneExamContext(Integer order_id , Integer item_id){
+    public Exam getOneExamContext(Integer order_id , Integer item_id ,Integer type){
 
-        return this.examDao.getOneExamContext(order_id, item_id);
+        return this.examDao.getOneExamContext(order_id, item_id, type);
     }
 }

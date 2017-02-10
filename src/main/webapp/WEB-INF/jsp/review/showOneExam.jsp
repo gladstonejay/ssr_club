@@ -25,7 +25,7 @@
 
         <div class="content">
 
-            <form class="zform zform-radius" action="/classLearn/examResult.j?id=${id}" method="post" id="form1">
+            <form class="zform zform-radius" action="/classLearn/examResult.j?id=${id}&type=${type}" method="post" id="form1">
             <c:forEach items="${exam}" var="item" varStatus="xh">
                 <div class="content-padded"><p> ${item.context} </p></div>
                 <div class="content-padded radio-pretty inline ">

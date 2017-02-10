@@ -33,7 +33,7 @@
         <div class="content">
             <div class="card demo-card-header-pic">
                 <div valign="bottom" class="card-header color-white no-border no-padding">
-                    <img class='card-cover' src="../../../static/imags/tab1_milk.png" alt="">
+                    <img class='card-cover' src="../../../static/imags/heroShare/headP.png" alt="">
                 </div>
             </div>
             <div class="buttons-tab">
@@ -43,6 +43,12 @@
             </div>
             <div class="tabs">
             <div id="tab1" class="tab active">
+                <%--简介图--%>
+                <div class="card demo-card-header-pic">
+                    <div valign="bottom" class="card-header color-white no-border no-padding">
+                        <img class='card-cover' src="../../../static/imags/shortIntro/industry.png" alt="">
+                    </div>
+                </div>
                 <c:forEach items="${content1}" var="item" varStatus="xh">
                     <div class="card">
                         <div class="card-content">
@@ -55,12 +61,11 @@
                                             </div>
                                             <div class="item-inner">
                                                 <div class="item-title-row">
-                                                    <div class="item-title">${item.title}</div>
+                                                    <div ><h4>${item.title}</h4></div>
                                                 </div>
-                                                <div class="item-subtitle">${item.subTitle}</div>
                                                 <br />
                                                 <div class="item-subtitle">
-                                                    <span>${item.createTime}</span>
+                                                    <img src="../../../static/imags/heroShare/time.png" width="16"> <span>${item.createTime}</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -72,6 +77,12 @@
                 </c:forEach>
             </div>
             <div id="tab2" class="tab">
+                <%--简介图--%>
+                <div class="card demo-card-header-pic">
+                    <div valign="bottom" class="card-header color-white no-border no-padding">
+                        <img class='card-cover' src="../../../static/imags/shortIntro/brand.png" alt="">
+                    </div>
+                </div>
                 <c:forEach items="${content2}" var="item" varStatus="xh">
                     <div class="card">
                         <div class="card-content">
@@ -84,12 +95,11 @@
                                             </div>
                                             <div class="item-inner">
                                                 <div class="item-title-row">
-                                                    <div class="item-title">${item.title}</div>
+                                                    <div ><h4>${item.title}</h4></div>
                                                 </div>
-                                                <div class="item-subtitle">${item.subTitle}</div>
                                                 <br />
                                                 <div class="item-subtitle">
-                                                    <span>${item.createTime}</span>
+                                                    <img src="../../../static/imags/heroShare/time.png" width="16"> <span>${item.createTime}</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -101,6 +111,12 @@
                 </c:forEach>
             </div>
             <div id="tab3" class="tab">
+                <%--简介图--%>
+                <div class="card demo-card-header-pic">
+                    <div valign="bottom" class="card-header color-white no-border no-padding">
+                        <img class='card-cover' src="../../../static/imags/shortIntro/perfect.png" alt="">
+                    </div>
+                </div>
                 <c:forEach items="${content3}" var="item" varStatus="xh">
                     <div class="card">
                         <div class="card-content">
@@ -108,17 +124,9 @@
                                 <ul>
                                     <li >
                                         <a href="/heroShare/showShareDetail.j?id=${item.item}&type=${item.type}" external class="item-link item-content">
-                                            <div class="item-media">
-                                                <img src="../../../static/imags/content/content${item.type}-${item.item}.png" width="44" >
-                                            </div>
                                             <div class="item-inner">
                                                 <div class="item-title-row">
-                                                    <div class="item-title">${item.title}</div>
-                                                </div>
-                                                <div class="item-subtitle">${item.subTitle}</div>
-                                                <br />
-                                                <div class="item-subtitle">
-                                                    <span>${item.createTime}</span>
+                                                    <div class="item-title"> Q${item.item}季度完美门店</div>
                                                 </div>
                                             </div>
                                         </a>
