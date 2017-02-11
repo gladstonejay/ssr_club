@@ -54,12 +54,6 @@
                                 <img class='card-cover' src="../../../static/imags/month/class-${month}.png" alt="">
                             </div>
                     <c:forEach items="${videoInfoList}" var="item" varStatus="xh">
-                        <%--<c:if test="${item.orderId=='1'}">--%>
-                            <%--<p style="text-align: center"><img src="../../../static/imags/month/6.0.png"  width="163" ></p>--%>
-                        <%--</c:if>--%>
-                        <%--<c:if test="${item.orderId=='3' || item.orderId=='7' || item.orderId=='11' ||item.orderId=='15' ||item.orderId=='19' ||item.orderId=='23' ||item.orderId=='27'}">--%>
-                            <%--<p style="text-align: center"><img src="../../../static/imags/month/${((item.orderId-3)/4+7)}.png"  width="163" ></p>--%>
-                        <%--</c:if>--%>
                         <div class="card">
                             <div class="card-content">
                                 <div class="list-block media-list">
@@ -188,7 +182,7 @@
                     <%--简介图--%>
                     <div class="card demo-card-header-pic">
                         <div valign="bottom" class="card-header color-white no-border no-padding">
-                            <img class='card-cover' src="../../../static/imags/shortIntro/answere.png" alt="">
+                            <img class='card-cover' src="../../../static/imags/shortIntro/answer.png" alt="">
                         </div>
                     </div>
                     <c:forEach items="${weixinList}" var="item" varStatus="xh">

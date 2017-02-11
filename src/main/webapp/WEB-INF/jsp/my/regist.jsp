@@ -94,6 +94,7 @@
                             </div>
                         </div>
                     </li>
+                    <li><input  type="hidden" value="${userType}" id="userType" name="userType" readonly="" /></li>
                     <li><p span style="color:red;" >${errorId}</p><p span style="color:red;">${errorNname}</p></li>
                     <li><input type="hidden" name="location" value="${location}"></li>
                 </ul>

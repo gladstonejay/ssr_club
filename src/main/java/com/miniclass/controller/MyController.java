@@ -235,6 +235,8 @@ public class MyController extends KaptchaExtend {
     public ModelAndView locationCheck(HttpServletRequest request){
 
         String location = request.getParameter("location");
+        String userType = request.getParameter("userType");
+        log.info("--------------userT" + userType);
         ModelAndView error = new ModelAndView("/my/chooseLocation");
         ModelAndView regist = new ModelAndView("/my/regist");
 
@@ -245,12 +247,13 @@ public class MyController extends KaptchaExtend {
         }
         else{
             regist.addObject("location",location);
+            regist.addObject("userType",userType);
             return regist;
         }
     }
 
     /**
-     * 选择区域验证
+     * 选择身份验证
      */
     @RequestMapping(value = "/typeCheck")
     public ModelAndView typeCheck(HttpServletRequest request){
@@ -269,18 +272,29 @@ public class MyController extends KaptchaExtend {
         }
         else{
             if ( type.equals("店员") || type.equals("店主")){
-                log.info("here");
+                int userType = 1;
+                if (type.equals("店员")){
+                    userType = 1;
+                }else{
+                    userType = 2;
+                }
+                location.addObject("userType",userType);
                 location.addObject("location",location);
 
                 return location;
             }
             else{
-                log.info("there");
+                int userType = 4;
+                if (type.equals("销售")){
+                    userType = 3;
+                }else{
+                    userType = 4;
+                }
+                regist.addObject("userType", userType);
                 regist.addObject("regist",regist);
 
                 return regist;
             }
-
         }
     }
 
@@ -294,7 +308,8 @@ public class MyController extends KaptchaExtend {
         ModelAndView errorModel = new ModelAndView("my/regist");
 
         String loca= request.getParameter("location");
-        log.info("location is " + loca);
+        Integer userType = Integer.parseInt(request.getParameter("userType"));
+        log.info("userType is " + userType);
         String[] location = loca.split(" ");
         log.info("location lenth is " + location.length);
 
@@ -316,7 +331,6 @@ public class MyController extends KaptchaExtend {
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
-
             UserBasic userBasic = new UserBasic();
             userBasic.setUserId(ubVo.getUserId());
             userBasic.setUserNname((ubVo.getUserNname()));

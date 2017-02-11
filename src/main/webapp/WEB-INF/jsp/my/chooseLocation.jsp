@@ -35,6 +35,7 @@
                                     <div class="item-title label">请选择门店区域</div>
                                     <div class="item-input">
                                         <input  type="text" placeholder="选择区域" id="location" name="location" readonly="" />
+                                        <input  type="hidden" value="${userType}" id="userType" name="userType" readonly="" />
                                     </div>
                                 </div>
                             </div>

@@ -42,11 +42,11 @@
             <div class="tabs">
                 <div id="tab1" class="tab">
                     <%--简介图--%>
-                    <div class="card demo-card-header-pic">
-                        <div valign="bottom" class="card-header color-white no-border no-padding">
-                            <img class='card-cover' src="../../../static/imags/shortIntro/warList.png" alt="">
-                        </div>
-                    </div>
+                    <%--<div class="card demo-card-header-pic">--%>
+                        <%--<div valign="bottom" class="card-header color-white no-border no-padding">--%>
+                            <%--<img class='card-cover' src="../../../static/imags/shortIntro/warList.png" alt="">--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
                     <c:forEach items="${content4}" var="item" varStatus="xh">
                         <div class="card">
                             <div class="card-content">
@@ -78,12 +78,6 @@
                     </c:forEach>
                 </div>
                 <div id="tab2" class="tab active">
-                    <%--简介图--%>
-                    <div class="card demo-card-header-pic">
-                        <div valign="bottom" class="card-header color-white no-border no-padding">
-                            <img class='card-cover' src="../../../static/imags/shortIntro/hero.png" alt="">
-                        </div>
-                    </div>
                 <c:choose>
                     <c:when test="${userBasic.userType == '1' ||  userBasic.userType == '2'}">
                         <div class="card">

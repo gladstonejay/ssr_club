@@ -65,6 +65,47 @@
                     </li>
                 </ul>
             </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="list-block media-list">
+                        <ul>
+                            <li>
+                                <a href="/heroCollection/showHeroList.j?type=6" external class="item-link item-content">
+                                    <div class="item-media">
+                                        <img src="../../../static/imags/my/score.png" width="34">
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">我的积分 : ${userShowInfo.userType}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="list-block media-list">
+                        <ul>
+                            <li>
+                                <a href="/heroCollection/showHeroList.j?type=6" external class="item-link item-content">
+                                    <div class="item-media">
+                                        <img src="../../../static/imags/my/score.png" width="34">
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">我的积分 : ${userShowInfo.userType}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
 
     </div>
 </div>

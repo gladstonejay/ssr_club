@@ -9,16 +9,16 @@
 
 <nav class="bar bar-tab">
     <a class="tab-item active" href="/heroCollection/showHero.j" external>
-        <span class="icon" ><img src="../../../static/imags/tab/tab1-active.png" width="36" ></span>
-        <span class="tab-label"><font color="000079">群英汇</font></span>
+        <span class="icon" ><img src="../../../static/imags/tab/tab2-active.png" width="40" ></span>
+        <%--<span class="tab-label"><font color="000079">群英汇</font></span>--%>
     </a>
     <a class="tab-item" href="/heroShare/showShare.j" external>
-        <span class="icon"><img src="../../../static/imags/tab/tab2.png" width="36" ></span>
-        <span class="tab-label">精英分享</span>
+        <span class="icon"><img src="../../../static/imags/tab/tab3.png" width="40" ></span>
+        <%--<span class="tab-label">精英分享</span>--%>
     </a>
     <a class="tab-item" href="/my/my.j" external>
-        <span class="icon"><img src="../../../static/imags/tab/tab3.png" width="30" ></span>
-        <span class="tab-label">我的</span>
+        <span class="icon"><img src="../../../static/imags/tab/tab4.png" width="40" ></span>
+        <%--<span class="tab-label">我的</span>--%>
     </a>
 </nav>
 
