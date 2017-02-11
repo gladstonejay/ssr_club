@@ -26,4 +26,8 @@ public interface ScoreService {
     public void addTScoreByExam (String userId);
 
 
+    /**
+     * 获取用户分数
+     */
+    public Integer getUserScoreByUserId (String userId);
 }

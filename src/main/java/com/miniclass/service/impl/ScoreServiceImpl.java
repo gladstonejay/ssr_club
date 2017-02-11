@@ -142,6 +142,14 @@ public class ScoreServiceImpl implements ScoreService {
             e.printStackTrace();
             log.error("用户 " + userId + "获得当日" + dateString + "，该" + LearnTypeEnum.getName(2) + "类型的积分出现错误");
         }
+    }
 
+    /**
+     * 获取用户分数
+     */
+    @Override
+    public Integer getUserScoreByUserId (String userId){
+
+        return userScoreRankDao.getUserScoreByUserId(userId);
     }
 }

@@ -124,4 +124,9 @@
     SELECT * FROM user_score_rank
     WHERE user_id=#{userId}
   </select>
+
+  <select id="getUserScoreByUserId" resultType="java.lang.Integer">
+    SELECT total_score FROM user_score_rank
+    WHERE user_id=#{userId}
+  </select>
 </mapper>

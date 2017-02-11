@@ -13,10 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
+import com.miniclass.entity.UserScoreRank;
 import com.miniclass.enums.UserTypeEnum;
+import com.miniclass.service.ScoreService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,6 +47,8 @@ public class MyController extends KaptchaExtend {
     private static Logger log = LoggerFactory.getLogger(MyController.class);
     @Resource
     private UserBasicService userBasicService;
+    @Autowired
+    private ScoreService scoreService;
 
     /**
      * 登录界面
@@ -126,19 +131,17 @@ public class MyController extends KaptchaExtend {
         UserBasic userBasic = null;
         try{
             userBasic = this.userBasicService.getUserById(userId);
+            if ( userBasic == null || userBasic.getUserId().length() == 0){
+                return new ModelAndView("redirect:/my/login.j");
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
         UserShowInfoVo userShowInfoVo = new UserShowInfoVo();
-        //Integer score = userBasic.getScore();
-        try {
-            userShowInfoVo.setCount(this.userBasicService.getUserRecordCount(userId));
-            userShowInfoVo.setExamCount(this.userBasicService.getUserExamCount(userId));
-        }catch (Exception e){
-            e.printStackTrace();
+
+        if (userBasic.getUserType().equals("1") || userBasic.getUserType().equals("2")){
+            userShowInfoVo.setScore(scoreService.getUserScoreByUserId(userId));
         }
-       //userShowInfoVo.setScore(score);
-        //userShowInfoVo.setLevel((score - score % 100) / 100 + 1);
         userShowInfoVo.setUserNickName(userBasic.getUserNname());
         userShowInfoVo.setUserType(UserTypeEnum.getName(Integer.parseInt(userBasic.getUserType())));
         userShowInfoVo.setUserTypeEnum(userBasic.getUserType());
@@ -240,9 +243,9 @@ public class MyController extends KaptchaExtend {
         ModelAndView error = new ModelAndView("/my/chooseLocation");
         ModelAndView regist = new ModelAndView("/my/regist");
 
-        if (location.equals(null) || location.length() == 0) {
+        if (location == null || location.length() == 0) {
             error.addObject("errorNname"," 请选择区域");
-
+            error.addObject("userType",userType);
             return error;
         }
         else{
@@ -264,8 +267,7 @@ public class MyController extends KaptchaExtend {
         ModelAndView regist = new ModelAndView("/my/regist");
         log.info("type is " + type);
 
-
-        if (type.equals(null) || type.length() == 0) {
+        if (type == null || type.length() == 0) {
             error.addObject("errorNname"," 请选择身份");
 
             return error;
@@ -308,7 +310,7 @@ public class MyController extends KaptchaExtend {
         ModelAndView errorModel = new ModelAndView("my/regist");
 
         String loca= request.getParameter("location");
-        Integer userType = Integer.parseInt(request.getParameter("userType"));
+        String userType = request.getParameter("userType");
         log.info("userType is " + userType);
         String[] location = loca.split(" ");
         log.info("location lenth is " + location.length);
@@ -322,6 +324,8 @@ public class MyController extends KaptchaExtend {
             errorModel.addObject("errorNname","昵称已存在");
         }
         if ( (a == 1) || (b==1) ){
+            errorModel.addObject("userType",userType);
+            errorModel.addObject("location",loca);
             return errorModel;
         }
         else{
@@ -335,11 +339,13 @@ public class MyController extends KaptchaExtend {
             userBasic.setUserId(ubVo.getUserId());
             userBasic.setUserNname((ubVo.getUserNname()));
             userBasic.setPassword(newstr);
-            userBasic.setUserType("n");
-            userBasic.setProvince(location[0]);
-            userBasic.setCity(location[1]);
-            if(location.length==3){
-                userBasic.setCounty(location[2]);
+            userBasic.setUserType(userType);
+            if (userType.equals("1") || userType.equals("2")){
+                userBasic.setProvince(location[0]);
+                userBasic.setCity(location[1]);
+                if(location.length==3){
+                    userBasic.setCounty(location[2]);
+                }
             }
             try {
                 userBasicService.insertNewUser(userBasic);
@@ -370,6 +376,13 @@ public class MyController extends KaptchaExtend {
         return modelAndView;
     }
 
+    @RequestMapping(value="/rank")
+    public ModelAndView rank( HttpServletRequest request, HttpServletResponse response){
+
+        ModelAndView modelAndView = new ModelAndView("my/rank");
+
+        return modelAndView;
+    }
 
     /**
      * MD5 生成函数

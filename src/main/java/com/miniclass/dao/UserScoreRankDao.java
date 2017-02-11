@@ -22,4 +22,6 @@ public interface UserScoreRankDao {
     public  int  getUserRecordCountByUserId (@Param("userId")String userId);
 
     public UserScoreRank getUserRecordByUserId(@Param("userId") String userId);
+
+    public Integer getUserScoreByUserId (@Param("userId")String userId);
 }
