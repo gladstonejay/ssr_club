@@ -58,7 +58,7 @@ public class ClassLearnController {
 
         String userId = CommonFuncUtil.getUserIdByCookie(request);
         if ( userId == null || userId.length() == 0){
-            List<VideoInfo> videoInfoList = userService.getAllVideo();
+            List<VideoInfo> videoInfoList = userService.getAllVideo("1");
             List<VideoInfoVo> videoInfoVos = new ArrayList<>();       
             VideoInfoVo videoInfoVo = null;
             for (VideoInfo videoInfo : videoInfoList) {
@@ -113,7 +113,14 @@ public class ClassLearnController {
                 return model2;
             }
             else{
-                List<VideoInfo> videoInfoList = userService.getAllVideo();
+                List<VideoInfo> videoInfoList = null;
+                if (userBasic.getUserType().equals("1"))
+                {
+                    videoInfoList =  userService.getAllVideo("1");
+                }else{
+                    videoInfoList =  userService.getAllVideo("2");
+                }
+                //List<VideoInfo> videoInfoList = userService.getAllVideo();
                 List<VideoInfoVo> videoInfoVos = new ArrayList<>();
                 VideoInfoVo videoInfoVo = null;
                 for (VideoInfo videoInfo : videoInfoList) {
@@ -159,7 +166,14 @@ public class ClassLearnController {
     public ModelAndView showHistory(HttpServletRequest request){
 
         ModelAndView model = new ModelAndView("/classLearn/showHistory");
-        List<VideoInfo> videoInfoList = userService.getAllDoneVideo();
+        String userId = CommonFuncUtil.getUserIdByCookie(request);
+        UserBasic userBasic = userService.getUserById(userId);
+        List<VideoInfo> videoInfoList = null;
+        if (userBasic.getUserType() == "1"){
+            videoInfoList = userService.getAllDoneVideo("1");
+        }else{
+            videoInfoList = userService.getAllDoneVideo("2");
+        }
         List<VideoInfoVo> videoInfoVos = new ArrayList<VideoInfoVo>();
         VideoInfoVo videoInfoVo = null;
         for (VideoInfo videoInfo : videoInfoList) {

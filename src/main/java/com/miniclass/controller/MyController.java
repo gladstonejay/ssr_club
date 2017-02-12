@@ -2,9 +2,7 @@ package com.miniclass.controller;
 
 import java.io.IOException;
 import java.security.MessageDigest;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 import javax.annotation.Resource;
 import javax.enterprise.inject.Model;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.miniclass.entity.UserScoreRank;
 import com.miniclass.enums.UserTypeEnum;
 import com.miniclass.service.ScoreService;
+import com.miniclass.vo.RankListVo;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -146,6 +145,18 @@ public class MyController extends KaptchaExtend {
         userShowInfoVo.setUserType(UserTypeEnum.getName(Integer.parseInt(userBasic.getUserType())));
         userShowInfoVo.setUserTypeEnum(userBasic.getUserType());
         log.info("用户的身份是" + userShowInfoVo.getUserType());
+
+        List<String> ranks = scoreService.getTop100User();
+
+        //String [] rankString=(String [])ranks.toArray();
+        //Integer rankInt = Arrays.asList(rankString).indexOf(userId);
+        Integer rankInt = ranks.indexOf(userId);
+        if (rankInt == -1){
+            userShowInfoVo.setRank("100+");
+        }else{
+            rankInt += 1;
+            userShowInfoVo.setRank(rankInt.toString());
+        }
 
         model.addObject("userShowInfo",userShowInfoVo);
         model.addObject("userId",userId);
@@ -380,6 +391,19 @@ public class MyController extends KaptchaExtend {
     public ModelAndView rank( HttpServletRequest request, HttpServletResponse response){
 
         ModelAndView modelAndView = new ModelAndView("my/rank");
+
+        List<RankListVo> rankListVos = new ArrayList<>();
+        List<UserScoreRank> userScoreRanks = scoreService.getTopUser();
+        for (UserScoreRank userScoreRank : userScoreRanks) {
+            RankListVo rankListVo = new RankListVo(userScoreRank);
+            UserBasic userBasic = userBasicService.getUserById(rankListVo.getUserId());
+            rankListVo.setUserNname(userBasic.getUserNname());
+            rankListVo.setCity(userBasic.getCity());
+            rankListVo.setCounty(userBasic.getCounty());
+
+            rankListVos.add(rankListVo);
+        }
+        modelAndView.addObject("rankList",rankListVos);
 
         return modelAndView;
     }

@@ -52,14 +52,14 @@ public class UserBasicServiceImpl implements UserBasicService{
         System.out.println("-------------service impl heimingdan " + userId);
         return this.userDao.selectUseBlackList(userId);
     }
-    public List<VideoInfo> getAllVideo(){
+    public List<VideoInfo> getAllVideo(String type){
 
-        return this.videoInfoDao.selectAllVideo();
+        return this.videoInfoDao.selectAllVideo(type);
     }
 
-    public List<VideoInfo> getAllDoneVideo(){
+    public List<VideoInfo> getAllDoneVideo(String type){
 
-        return this.videoInfoDao.selectAllDoneVideo();
+        return this.videoInfoDao.selectAllDoneVideo( type);
     }
 
     public VideoInfo getVideoById(int videoId)

@@ -1,6 +1,7 @@
 package com.miniclass.dao;
 
 import com.miniclass.entity.VideoInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,9 +20,9 @@ public interface VideoInfoDao {
 
     int updateByPrimaryKey(VideoInfo record);
 
-    List<VideoInfo> selectAllVideo();
+    List<VideoInfo> selectAllVideo(@Param("type")String type);
 
-    List<VideoInfo> selectAllDoneVideo();
+    List<VideoInfo> selectAllDoneVideo(@Param("type")String type);
 
     VideoInfo getVideoById(Integer videoId);
 }

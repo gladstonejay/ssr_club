@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
-                                            <div class="item-title">我的排名 : ${userShowInfo.userType}</div>
+                                            <div class="item-title">我的排名 : ${userShowInfo.rank}</div>
                                         </div>
                                     </div>
                                 </a>

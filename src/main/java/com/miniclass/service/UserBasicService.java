@@ -23,9 +23,9 @@ public interface UserBasicService {
 
     public int useBlackList(String userName);
 
-    public List<VideoInfo> getAllVideo();
+    public List<VideoInfo> getAllVideo(String type);
 
-    public List<VideoInfo> getAllDoneVideo();
+    public List<VideoInfo> getAllDoneVideo(String type);
 
     public List<UserRecord> getUserDoneClassRecord(String userId);
 

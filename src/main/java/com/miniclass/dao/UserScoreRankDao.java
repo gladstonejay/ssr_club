@@ -4,6 +4,8 @@ import com.miniclass.entity.UserScoreRank;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserScoreRankDao {
 
@@ -24,4 +26,8 @@ public interface UserScoreRankDao {
     public UserScoreRank getUserRecordByUserId(@Param("userId") String userId);
 
     public Integer getUserScoreByUserId (@Param("userId")String userId);
+
+    public List<UserScoreRank> getTopUser();
+
+    public List<String> getTop100User();
 }

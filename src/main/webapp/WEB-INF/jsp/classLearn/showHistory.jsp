@@ -45,7 +45,7 @@
                                             </c:otherwise>
                                             </c:choose>
                                             <div class="item-media">
-                                                <img src="../../../static/imags/video${item.orderId}.png" width="44">
+                                                <img src="../../../static/imags/video/video${item.orderId}.png" width="64">
                                             </div>
                                             <div class="item-inner">
                                                 <div class="item-title-row">

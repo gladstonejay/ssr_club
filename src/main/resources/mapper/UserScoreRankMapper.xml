@@ -129,4 +129,12 @@
     SELECT total_score FROM user_score_rank
     WHERE user_id=#{userId}
   </select>
+
+  <select id="getTopUser"  resultMap="BaseResultMap">
+    select * from user_score_rank order by total_score desc limit 10;
+  </select>
+
+  <select id="getTop100User"  resultType="java.lang.String">
+    select user_id from user_score_rank order by total_score desc limit 100;
+  </select>
 </mapper>

@@ -1,6 +1,9 @@
 package com.miniclass.service;
 
+import com.miniclass.entity.UserScoreRank;
 import sun.reflect.generics.tree.VoidDescriptor;
+
+import java.util.List;
 
 /**
  * SSR_CLUB 积分服务
@@ -30,4 +33,14 @@ public interface ScoreService {
      * 获取用户分数
      */
     public Integer getUserScoreByUserId (String userId);
+
+    /**
+     * 获得前十
+     */
+    public List<UserScoreRank> getTopUser();
+
+    /**
+     * 获得前100
+     */
+    public List<String> getTop100User();
 }

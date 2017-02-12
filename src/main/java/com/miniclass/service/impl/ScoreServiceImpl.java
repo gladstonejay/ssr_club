@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by shuaizhiguo on 2017/2/7.
@@ -151,5 +152,20 @@ public class ScoreServiceImpl implements ScoreService {
     public Integer getUserScoreByUserId (String userId){
 
         return userScoreRankDao.getUserScoreByUserId(userId);
+    }
+
+    /**
+     * 获得前十
+     */
+    public List<UserScoreRank> getTopUser(){
+
+        return userScoreRankDao.getTopUser();
+    }
+
+    /**
+     * 获得前100
+     */
+    public List<String> getTop100User(){
+        return userScoreRankDao.getTop100User();
     }
 }

@@ -18,6 +18,18 @@ public class UserShowInfoVo extends Vo{
 
     private Integer examCount;
 
+    private String userTypeEnum;
+
+    private String rank;
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
     public String getUserTypeEnum() {
         return userTypeEnum;
     }
@@ -25,9 +37,6 @@ public class UserShowInfoVo extends Vo{
     public void setUserTypeEnum(String userTypeEnum) {
         this.userTypeEnum = userTypeEnum;
     }
-
-    private String userTypeEnum;
-
 
     public Integer getCount() {
         return count;

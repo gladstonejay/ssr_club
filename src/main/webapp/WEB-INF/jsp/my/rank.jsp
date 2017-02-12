@@ -24,19 +24,25 @@
         <%@ include file="../common/bottom4.jsp" %>
 
         <div class="content">
-            <div class="card demo-card-header-pic">
                 <div valign="bottom" class="card-header color-white no-border no-padding">
                     <img class='card-cover' src="../../../static/imags/rank/headP.png" alt="">
                 </div>
-            </div>
-            <c:forEach items="${rankList}" var="item" varStatus="xh">
-                <li class="item-content">
-                    <div class="item-inner">
-                        <div class="item-title"><span class="icon" ><img src="../../../static/imags/cups/tab2-${xh.count}.png" width="28" ></span> ${item.userNname}</div>
-                        <div class="item-after">${item.score}</div>
+            <div class="list-block">
+                <ul>
+                        <div valign="bottom" class="card-header color-white no-border no-padding">
+                            <img class='card-cover' src="../../../static/imags/rank/rankTitle.png" alt="">
+                        </div>
+                    <c:forEach items="${rankList}" var="item" varStatus="xh">
+                    <li class="item-content">
+                        <div class="item-inner">
+                        <div class="item-title"><span class="icon" ><img src="../../../static/imags/rank/rank-${xh.count}.png" width="28" ></span> ${item.userNname}(${item.city} ${item.county}店)</div>
+                        <div class="item-after">${item.totalScore}</div>
                     </div>
                 </li>
-            </c:forEach>
+                    </c:forEach>
+                </ul>
+            </div>
+
         </div>
     </div>
 </div>
