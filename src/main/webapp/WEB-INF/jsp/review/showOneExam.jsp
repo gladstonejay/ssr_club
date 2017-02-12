@@ -18,9 +18,6 @@
 <body>
 <div class="page-group">
     <div class="page page-current">
-        <header class="bar bar-nav">
-            <h1 class='title'>考试</h1>
-        </header>
         <%@ include file="../common/bottom.jsp" %>
 
         <div class="content">

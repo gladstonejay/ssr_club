@@ -18,10 +18,6 @@
 <body>
 <div class="page-group">
     <div class="page page-current">
-        <header class="bar bar-nav">
-            <h1 class='title'>精英分享</h1>
-        </header>
-
         <c:choose>
             <c:when test="${userBasic.userType == '3' ||  userBasic.userType == '4'}">
                 <%@ include file="../common/bottom21.jsp" %>

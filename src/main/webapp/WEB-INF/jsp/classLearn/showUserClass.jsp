@@ -18,9 +18,7 @@
 <body>
 <div class="page-group">
     <div class="page page-current">
-        <header class="bar bar-nav">
-            <h1 class="title"><span class="icon" ><img src="../../../static/imags/tab/tab4-active.png" width="22" ></span> 我的课程</h1>
-        </header>
+
         <%@ include file="../common/bottom.jsp" %>
         <div class="content">
 

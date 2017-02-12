@@ -14,9 +14,6 @@
 </head>
 <body>
   <div class="page page-current">
-    <header class="bar bar-nav">
-      <h1 class='title'>成绩单</h1>
-    </header>
 
     <%@ include file="../common/bottom.jsp" %>
 
