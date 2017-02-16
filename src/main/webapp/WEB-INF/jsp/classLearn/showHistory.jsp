@@ -52,8 +52,7 @@
                                                 <div class="item-subtitle"><img src="../../../static/imags/classLearn/writer.png" width="12"> ：${item.writer}</div>
                                                 <div class="item-subtitle">
                                                     <img src="../../../static/imags/heroShare/time.png" width="16"> <span>${item.timestamp}</span>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <img src="../../../static/imags/classLearn/class_done.png" width="48">
                                                 </div>
                                             </div>

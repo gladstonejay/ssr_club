@@ -77,8 +77,7 @@
                                                             <div class="item-subtitle"><img src="../../../static/imags/classLearn/writer.png" width="12"> ：${item.writer}</div>
                                                             <div class="item-subtitle">
                                                                 <img src="../../../static/imags/heroShare/time.png" width="16"> <span>${item.timestamp}</span>
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <c:if test="${item.status=='1'}">
                                                                     <img src="../../../static/imags/classLearn/class_done.png" width="48">
                                                                 </c:if>
