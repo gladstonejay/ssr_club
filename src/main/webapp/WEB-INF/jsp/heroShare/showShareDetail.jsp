@@ -19,16 +19,19 @@
 <div class="page-group">
     <div class="page page-current">
 
-        <c:choose>
-            <c:when test="${userBasic.userType == '3' ||  userBasic.userType == '4'}">
-                <%@ include file="../common/bottom21.jsp" %>
-            </c:when>
-            <c:otherwise>
-                <%@ include file="../common/bottom3.jsp" %>
-            </c:otherwise></c:choose>
+        <%--<c:choose>--%>
+            <%--<c:when test="${userBasic.userType == '3' ||  userBasic.userType == '4'}">--%>
+                <%--<%@ include file="../common/bottom21.jsp" %>--%>
+            <%--</c:when>--%>
+            <%--<c:otherwise>--%>
+                <%--<%@ include file="../common/bottom3.jsp" %>--%>
+            <%--</c:otherwise></c:choose>--%>
+        <%@ include file="../common/bottom3.jsp" %>
         <div class="content">
             <div class="item-media">
+                <div valign="bottom" class="card-header color-white no-border no-padding">
                 <img class='card-cover' src="../../../static/imags/content/content-big${content.type}-${content.imageName}.png" >
+                    </div>
             </div>
         </div>
     </div>

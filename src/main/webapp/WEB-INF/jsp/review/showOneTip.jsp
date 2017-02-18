@@ -21,7 +21,9 @@
         <%@ include file="../common/bottom.jsp" %>
         <div class="content">
             <div class="item-media">
-                <img class='card-cover' src="../../../static/imags/content/content-weixin-${weixin.itemId}.png" >
+                <div valign="bottom" class="card-header color-white no-border no-padding">
+                    <img class='card-cover' src="../../../static/imags/content/content-weixin-${weixin.itemId}.png" >
+                </div>
             </div>
         </div>
     </div>

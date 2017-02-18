@@ -32,7 +32,7 @@
                 <a href="#tab1" class="tab-link button">课程考核</a>
                 <a href="#tab3" class="tab-link button">答疑精选</a>
             </div>
-
+            <%--我的课程--%>
             <div class="tabs">
                 <div id="tab4" class="tab active">
                     <%--简介图--%>
@@ -41,13 +41,6 @@
                             <img class='card-cover' src="../../../static/imags/shortIntro/myClass.png" alt="">
                         </div>
                     </div>
-
-                        <%--课程预告--%>
-                    <%--<div class="card demo-card-header-pic">--%>
-                        <%--<div>--%>
-                            <%--<p style="text-align: center"> <img src="../../../static/imags/precast.png" width="296"></p>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
                             <div valign="bottom" class="card-header color-white no-border no-padding">
                                 <img class='card-cover' src="../../../static/imags/month/class-${month}.png" alt="">
                             </div>
@@ -101,6 +94,7 @@
                         </div>
                     </div>
                 </div>
+                <%--课程考核--%>
                 <div id="tab1" class="tab">
                     <%--简介图--%>
                     <div class="card demo-card-header-pic">
@@ -120,7 +114,7 @@
                                             <li >
                                                 <a href="/classLearn/showOneExam.j?id=${item.orderId}&type=1" external class="item-link item-content">
                                                     <div class="item-media">
-                                                        <img src="../../../static/imags/classLearn/before_test_${item.orderId}.png" width="64" >
+                                                        <img src="../../../static/imags/content/before_test_${item.orderId}.png" width="64" >
                                                     </div>
                                                     <div class="item-inner">
                                                         <div class="item-title-row">
@@ -153,7 +147,7 @@
                                             <li >
                                                 <a href="/classLearn/showOneExam.j?id=${item.orderId}&type=2" external class="item-link item-content">
                                                     <div class="item-media">
-                                                        <img src="../../../static/imags/classLearn/before_test_${item.orderId}.png" width="64" >
+                                                        <img src="../../../static/imags/content/after_test_${item.orderId}.png" width="64" >
                                                     </div>
                                                     <div class="item-inner">
                                                         <div class="item-title-row">

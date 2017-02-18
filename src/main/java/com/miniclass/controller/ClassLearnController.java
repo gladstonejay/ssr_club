@@ -94,10 +94,10 @@ public class ClassLearnController {
             return model;
         }else{
             UserBasic userBasic = userService.getUserById(userId);
+
+
+            /*
             if ( userBasic.getUserType().equals(Constant.SALES) || userBasic.getUserType().equals(Constant.DEALER) ){
-                /**
-                 * todo : 这里如果是其他权限 需要加载新的数据
-                 */
 
                 List<Content> content5 = null;
                 try{
@@ -112,13 +112,15 @@ public class ClassLearnController {
 
                 return model2;
             }
+
             else{
+            */
                 List<VideoInfo> videoInfoList = null;
-                if (userBasic.getUserType().equals("1"))
+                if (userBasic.getUserType().equals("2"))
                 {
-                    videoInfoList =  userService.getAllVideo("1");
-                }else{
                     videoInfoList =  userService.getAllVideo("2");
+                }else{
+                    videoInfoList =  userService.getAllVideo("1");
                 }
                 //List<VideoInfo> videoInfoList = userService.getAllVideo();
                 List<VideoInfoVo> videoInfoVos = new ArrayList<>();
@@ -154,7 +156,7 @@ public class ClassLearnController {
                 model.addObject("videoInfoList", videoInfoVos);
 
                 return model;
-            }
+            //}
         }
 
     }
@@ -169,10 +171,10 @@ public class ClassLearnController {
         String userId = CommonFuncUtil.getUserIdByCookie(request);
         UserBasic userBasic = userService.getUserById(userId);
         List<VideoInfo> videoInfoList = null;
-        if (userBasic.getUserType() == "1"){
-            videoInfoList = userService.getAllDoneVideo("1");
-        }else{
+        if (userBasic.getUserType() == "2"){
             videoInfoList = userService.getAllDoneVideo("2");
+        }else{
+            videoInfoList = userService.getAllDoneVideo("1");
         }
         List<VideoInfoVo> videoInfoVos = new ArrayList<VideoInfoVo>();
         VideoInfoVo videoInfoVo = null;
@@ -217,19 +219,24 @@ public class ClassLearnController {
         }
         log.info("---------------最终的用户名字是：" + userId);
 
-        UserRecord userRecord = new UserRecord();
-        userRecord.setUserId(userId);
-        userRecord.setMid(videoId);
-        //type： video, weixin, ppt,exam
-        userRecord.setType("video");
-        userRecord.setScore(0);
-        Calendar cal = Calendar.getInstance();
-        Integer month = cal.get(Calendar.MONTH) + 1;
-        userRecord.setMonth(month);
-        Integer count = this.userService.isRecorded(userRecord);
-        if (count == 0){
-            this.userService.insertUserRecord(userRecord);
-            scoreService.addTScoreByClass(userId);
+        String userType = userService.getUserById(userId).getUserType();
+
+        if (userType.equals("1") || userType.equals("2") ) {
+
+            UserRecord userRecord = new UserRecord();
+            userRecord.setUserId(userId);
+            userRecord.setMid(videoId);
+            //type： video, weixin, ppt,exam
+            userRecord.setType("video");
+            userRecord.setScore(0);
+            Calendar cal = Calendar.getInstance();
+            Integer month = cal.get(Calendar.MONTH) + 1;
+            userRecord.setMonth(month);
+            Integer count = this.userService.isRecorded(userRecord);
+            if (count == 0) {
+                this.userService.insertUserRecord(userRecord);
+                scoreService.addTScoreByClass(userId);
+            }
         }
         model.addObject("videoInfo",videoInfo);
 
@@ -269,21 +276,25 @@ public class ClassLearnController {
         }
         log.info("---------------最终的用户名字是：" + userId);
 
-        UserRecord userRecord = new UserRecord();
-        userRecord.setUserId(userId);
-        userRecord.setMid(id);
-        //type： video, weixin, ppt,exam
-        userRecord.setType("weixin");
-        userRecord.setScore(0);
-        Calendar cal = Calendar.getInstance();
-        Integer month = cal.get(Calendar.MONTH) + 1;
-        userRecord.setMonth(month);
-        Integer count = this.userService.isRecorded(userRecord);
-        if (count == 0){
-            this.userService.insertUserRecord(userRecord);
-            scoreService.addTScoreByLearn(userId);
-        }
+        String userType = userService.getUserById(userId).getUserType();
 
+        if (userType.equals("1") || userType.equals("2") ) {
+
+            UserRecord userRecord = new UserRecord();
+            userRecord.setUserId(userId);
+            userRecord.setMid(id);
+            //type： video, weixin, ppt,exam
+            userRecord.setType("weixin");
+            userRecord.setScore(0);
+            Calendar cal = Calendar.getInstance();
+            Integer month = cal.get(Calendar.MONTH) + 1;
+            userRecord.setMonth(month);
+            Integer count = this.userService.isRecorded(userRecord);
+            if (count == 0) {
+                this.userService.insertUserRecord(userRecord);
+                scoreService.addTScoreByLearn(userId);
+            }
+        }
         return modelAndView;
     }
 
@@ -378,19 +389,24 @@ public class ClassLearnController {
         }
         log.info("---------------最终的用户名字是：" + userId);
 
-        UserRecord userRecord = new UserRecord();
-        userRecord.setUserId(userId);
-        userRecord.setMid(id);
-        //type： video, weixin, ppt,exam
-        userRecord.setType("exam");
-        userRecord.setScore(score);
-        Calendar cal = Calendar.getInstance();
-        Integer month = cal.get(Calendar.MONTH) + 1;
-        userRecord.setMonth(month);
-        Integer count = this.userService.isRecorded(userRecord);
-        if (count == 0){
-            this.userService.insertUserRecord(userRecord);
-            scoreService.addTScoreByExam(userId);
+        String userType = userService.getUserById(userId).getUserType();
+
+        if (userType.equals("1") || userType.equals("2") ) {
+
+            UserRecord userRecord = new UserRecord();
+            userRecord.setUserId(userId);
+            userRecord.setMid(id);
+            //type： video, weixin, ppt,exam
+            userRecord.setType("exam");
+            userRecord.setScore(score);
+            Calendar cal = Calendar.getInstance();
+            Integer month = cal.get(Calendar.MONTH) + 1;
+            userRecord.setMonth(month);
+            Integer count = this.userService.isRecorded(userRecord);
+            if (count == 0) {
+                this.userService.insertUserRecord(userRecord);
+                scoreService.addTScoreByExam(userId);
+            }
         }
         return modelAndView;
     }

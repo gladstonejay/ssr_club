@@ -25,14 +25,14 @@
             <h1 class='title'>我的微课堂</h1>
         </header>
 
-        <c:choose>
-        <c:when test="${userShowInfo.userTypeEnum == '3' ||  userShowInfo.userTypeEnum == '4'}">
-            <%@ include file="../common/bottom31.jsp" %>
-            </c:when>
-            <c:otherwise>
-                <%@ include file="../common/bottom4.jsp" %>
-                </c:otherwise></c:choose>
-        <%--<%@ include file="../common/bottom4.jsp" %>--%>
+        <%--<c:choose>--%>
+        <%--<c:when test="${userShowInfo.userTypeEnum == '3' ||  userShowInfo.userTypeEnum == '4'}">--%>
+            <%--<%@ include file="../common/bottom31.jsp" %>--%>
+            <%--</c:when>--%>
+            <%--<c:otherwise>--%>
+                <%--<%@ include file="../common/bottom4.jsp" %>--%>
+                <%--</c:otherwise></c:choose>--%>
+        <%@ include file="../common/bottom4.jsp" %>
         <div class="content">
 
             <div class="card demo-card-header-pic">
