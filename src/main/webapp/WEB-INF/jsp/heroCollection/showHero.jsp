@@ -133,7 +133,7 @@
                                                 </div>
                                                 <div class="item-inner">
                                                     <div class="item-title-row">
-                                                        <div class="item-title">区域销售排行棒</div>
+                                                        <div class="item-title">区域销售排行榜</div>
                                                     </div>
                                                 </div>
                                             </a>
