@@ -93,7 +93,12 @@ public class ClassLearnController {
 
             return model;
         }else{
-            UserBasic userBasic = userService.getUserById(userId);
+            UserBasic userBasic = null;
+            try {
+                 userBasic = userService.getUserById(userId);
+            }catch (Exception e){
+                log.error(e.getMessage());
+            }
 
 
             /*
@@ -118,9 +123,17 @@ public class ClassLearnController {
                 List<VideoInfo> videoInfoList = null;
                 if (userBasic.getUserType().equals("2"))
                 {
-                    videoInfoList =  userService.getAllVideo("2");
+                    try {
+                        videoInfoList = userService.getAllVideo("2");
+                    }catch (Exception e){
+                        log.error(e.getMessage());
+                    }
                 }else{
-                    videoInfoList =  userService.getAllVideo("1");
+                    try {
+                        videoInfoList = userService.getAllVideo("1");
+                    }catch (Exception e){
+                        log.error(e.getMessage());
+                    }
                 }
                 //List<VideoInfo> videoInfoList = userService.getAllVideo();
                 List<VideoInfoVo> videoInfoVos = new ArrayList<>();
@@ -169,7 +182,12 @@ public class ClassLearnController {
 
         ModelAndView model = new ModelAndView("/classLearn/showHistory");
         String userId = CommonFuncUtil.getUserIdByCookie(request);
-        UserBasic userBasic = userService.getUserById(userId);
+        UserBasic userBasic = null;
+        try {
+            userBasic = userService.getUserById(userId);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
         List<VideoInfo> videoInfoList = null;
         if (userBasic.getUserType() == "2"){
             videoInfoList = userService.getAllDoneVideo("2");
@@ -200,7 +218,12 @@ public class ClassLearnController {
     {
         ModelAndView model = new ModelAndView("/classLearn/showOneClass");
         int videoId = Integer.parseInt(request.getParameter("id"));
-        VideoInfo videoInfo = this.userService.getVideoById(videoId);
+        VideoInfo videoInfo =null;
+        try {
+            videoInfo = this.userService.getVideoById(videoId);
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
 
 
         HttpSession session = request.getSession();
