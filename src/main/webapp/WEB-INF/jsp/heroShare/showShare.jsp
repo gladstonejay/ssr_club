@@ -76,7 +76,7 @@
                 <%--简介图--%>
                 <div class="card demo-card-header-pic">
                     <div valign="bottom" class="card-header color-white no-border no-padding">
-                        <img class='card-cover' src="../../../static/imags/shortIntro/brand.png" alt="">
+                        <img class='card-cover' src="../../../static/imags/shortIntro/brand1.png" alt="">
                     </div>
                 </div>
                 <c:forEach items="${content2}" var="item" varStatus="xh">
@@ -110,7 +110,7 @@
                 <%--简介图--%>
                 <div class="card demo-card-header-pic">
                     <div valign="bottom" class="card-header color-white no-border no-padding">
-                        <img class='card-cover' src="../../../static/imags/shortIntro/perfect.png" alt="">
+                        <img class='card-cover' src="../../../static/imags/shortIntro/perfect1.png" alt="">
                     </div>
                 </div>
                 <c:forEach items="${content3}" var="item" varStatus="xh">

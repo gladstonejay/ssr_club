@@ -19,7 +19,7 @@
 <div class="page-group">
     <div class="page page-current">
         <header class="bar bar-nav">
-            <h1 class='title'><span class="icon" ><img src="../../../static/imags/tab/tab2-active.png" width="28" ></span> 学习排名 前十达人</h1>
+            <h1 class='title'><span class="icon" ><img src="../../../static/imags/tab/tab22-active.png" width="28" ></span> 学习排名 前十达人</h1>
         </header>
         <%@ include file="../common/bottom4.jsp" %>
 

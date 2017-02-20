@@ -392,15 +392,19 @@ public class MyController extends KaptchaExtend {
         ModelAndView modelAndView = new ModelAndView("my/rank");
 
         List<RankListVo> rankListVos = new ArrayList<>();
-        List<UserScoreRank> userScoreRanks = scoreService.getTopUser();
-        for (UserScoreRank userScoreRank : userScoreRanks) {
-            RankListVo rankListVo = new RankListVo(userScoreRank);
-            UserBasic userBasic = userBasicService.getUserById(rankListVo.getUserId());
-            rankListVo.setUserNname(userBasic.getUserNname());
-            rankListVo.setCity(userBasic.getCity());
-            rankListVo.setCounty(userBasic.getCounty());
+        try {
+            List<UserScoreRank> userScoreRanks = scoreService.getTopUser();
+            for (UserScoreRank userScoreRank : userScoreRanks) {
+                RankListVo rankListVo = new RankListVo(userScoreRank);
+                UserBasic userBasic = userBasicService.getUserById(rankListVo.getUserId());
+                rankListVo.setUserNname(userBasic.getUserNname());
+                rankListVo.setCity(userBasic.getCity());
+                rankListVo.setCounty(userBasic.getCounty());
 
-            rankListVos.add(rankListVo);
+                rankListVos.add(rankListVo);
+            }
+        }catch (Exception e){
+            log.error(e.getMessage());
         }
         modelAndView.addObject("rankList",rankListVos);
 
