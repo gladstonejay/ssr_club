@@ -57,6 +57,7 @@ public class ClassLearnController {
         ModelAndView model2 = new ModelAndView("/heroCollection/showHero");
 
         String userId = CommonFuncUtil.getUserIdByCookie(request);
+
         if ( userId == null || userId.length() == 0){
             List<VideoInfo> videoInfoList = userService.getAllVideo("1");
             List<VideoInfoVo> videoInfoVos = new ArrayList<>();       
@@ -96,32 +97,8 @@ public class ClassLearnController {
             UserBasic userBasic = null;
             try {
                  userBasic = userService.getUserById(userId);
-            }catch (Exception e){
-                log.error(e.getMessage());
-            }
-
-
-            /*
-            if ( userBasic.getUserType().equals(Constant.SALES) || userBasic.getUserType().equals(Constant.DEALER) ){
-
-                List<Content> content5 = null;
-                try{
-                    userBasic = userService.getUserById(userId);
-                    content5 = userShareService.getContentByType(5);
-                }catch (Exception e){
-                    log.error("群英汇获取数据出现异常");
-                }
-
-                model2.addObject("userBasic", userBasic);
-                model2.addObject("content5", content5);
-
-                return model2;
-            }
-
-            else{
-            */
                 List<VideoInfo> videoInfoList = null;
-                if (userBasic.getUserType().equals("2"))
+                if (userBasic.getUserType().equals("2".toString()))
                 {
                     try {
                         videoInfoList = userService.getAllVideo("2");
@@ -168,8 +145,10 @@ public class ClassLearnController {
                 model.addObject("weixinList", resultWeixin);
                 model.addObject("videoInfoList", videoInfoVos);
 
-                return model;
-            //}
+            }catch (Exception e){
+                log.error(e.getMessage());
+            }
+            return model;
         }
 
     }
