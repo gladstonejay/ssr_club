@@ -127,12 +127,12 @@
                 },
             userNname:{
                 required : true,
-                pattern :  /^\S{5,24}(?!_)(?!.*?_$)[\u4e00-\u9fa5a-zA-Z0-9_]+$/,
+                pattern :  /^\S{1,24}(?!_)(?!.*?_$)[\u4e00-\u9fa5a-zA-Z0-9_]+$/,
                 each:function(){
                 },
                 descriptions:{
                     required : '<div class="field-invalidmsg">请输入昵称</div>',
-                    pattern : '<div class="field-invalidmsg">昵称请输入6-24位字符：支持中文、英文、数字、“_”</div>',
+                    pattern : '<div class="field-invalidmsg">昵称请输入2-24位字符：支持中文、英文、数字、“_”</div>',
                     valid : '<div class="field-validmsg">正确</div>'
                 }
             },
