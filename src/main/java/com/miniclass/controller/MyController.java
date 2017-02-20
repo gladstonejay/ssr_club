@@ -144,7 +144,6 @@ public class MyController extends KaptchaExtend {
         userShowInfoVo.setUserNickName(userBasic.getUserNname());
         userShowInfoVo.setUserType(UserTypeEnum.getName(Integer.parseInt(userBasic.getUserType())));
         userShowInfoVo.setUserTypeEnum(userBasic.getUserType());
-        log.info("用户的身份是" + userShowInfoVo.getUserType());
 
         List<String> ranks = scoreService.getTop100User();
 
@@ -276,7 +275,6 @@ public class MyController extends KaptchaExtend {
         ModelAndView error = new ModelAndView("/my/chooseType");
         ModelAndView location = new ModelAndView("/my/chooseLocation");
         ModelAndView regist = new ModelAndView("/my/regist");
-        log.info("type is " + type);
 
         if (type == null || type.length() == 0) {
             error.addObject("errorNname"," 请选择身份");
@@ -319,12 +317,13 @@ public class MyController extends KaptchaExtend {
     public ModelAndView registerPost( UserBasicVo ubVo , HttpServletRequest request, HttpServletResponse response){
 
         ModelAndView errorModel = new ModelAndView("my/regist");
+        response.setContentType("application/json;charset=UTF-8");
 
         String loca= request.getParameter("location");
         String userType = request.getParameter("userType");
-        log.info("userType is " + userType);
         String[] location = loca.split(" ");
-        log.info("location lenth is " + location.length);
+        log.info("用户注册的昵称是 " + ubVo.getUserNname());
+
 
         Integer a = userBasicService.userIdExist(ubVo.getUserId());
         if (a == 1){

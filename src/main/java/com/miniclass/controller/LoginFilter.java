@@ -43,12 +43,10 @@ public class LoginFilter extends BaseController implements Filter{
         if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies) {
                 if (CURRENT_USER.equals(cookie.getName())) {
-                    log.info("------------刚进入过滤器，获取到的用户名应该为空" + userId);
                     userId = cookie.getValue();
-                    log.info("------------从cookie中拿到用户名，获取到的Userld为" + userId);
                     session.setAttribute(CURRENT_USER, userId);
                     session.setMaxInactiveInterval( LastTime );
-                    log.info("------------打session，从sessino中过去用户名" + session.getAttribute(CURRENT_USER));
+                    //log.info("------------打session，从sessino中过去用户名" + session.getAttribute(CURRENT_USER));
                 }
             }
         }

@@ -5,7 +5,7 @@
   Time: 18:35
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -127,7 +127,7 @@
                 },
             userNname:{
                 required : true,
-                pattern :  /^\S{5,24}(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/,
+                pattern :  /^\S{5,24}(?!_)(?!.*?_$)[\u4e00-\u9fa5a-zA-Z0-9_]+$/,
                 each:function(){
                 },
                 descriptions:{
