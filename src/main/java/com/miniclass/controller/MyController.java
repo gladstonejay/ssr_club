@@ -296,7 +296,7 @@ public class MyController extends KaptchaExtend {
             }
             else{
                 int userType = 4;
-                if (type.equals("销售")){
+                if (type.equals("雀巢销售")){
                     userType = 3;
                 }else{
                     userType = 4;
@@ -350,6 +350,7 @@ public class MyController extends KaptchaExtend {
             userBasic.setUserNname((ubVo.getUserNname()));
             userBasic.setPassword(newstr);
             userBasic.setUserType(userType);
+            userBasic.setStatus(0);
             if (userType.equals("1") || userType.equals("2")){
                 userBasic.setProvince(location[0]);
                 userBasic.setCity(location[1]);
