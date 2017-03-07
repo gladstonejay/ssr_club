@@ -26,16 +26,16 @@
             <c:forEach items="${exam}" var="item" varStatus="xh">
                 <div class="content-padded"><p> ${item.context} </p></div>
                 <div class="content-padded radio-pretty inline ">
-                    <input type="radio"  name="radio+${item.id}" value="A"><span> ${item.a}</span>
+                    <input type="radio"  name="radio+${item.itemId}" value="A"><span> ${item.a}</span>
                 </div>
                 <div class="content-padded radio-pretty inline ">
-                <input type="radio" name="radio+${item.id}" value="B"><span> ${item.b}</span>
+                <input type="radio" name="radio+${item.itemId}" value="B"><span> ${item.b}</span>
                 </div>
                 <div class="content-padded radio-pretty inline">
-                    <input type="radio" name="radio+${item.id}" value="C"><span> ${item.c}</span>
+                    <input type="radio" name="radio+${item.itemId}" value="C"><span> ${item.c}</span>
                 </div>
                 <div class="content-padded radio-pretty inline">
-                    <input type="radio" name="radio+${item.id}" value="D"><span> ${item.d}</span>
+                    <input type="radio" name="radio+${item.itemId}" value="D"><span> ${item.d}</span>
                 </div>
             </c:forEach>
                 <div class="content-block">

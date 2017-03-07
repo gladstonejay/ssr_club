@@ -49,7 +49,7 @@ public class UserBasicServiceImpl implements UserBasicService{
     }
     public int useBlackList(String userId){
 
-        System.out.println("-------------service impl heimingdan " + userId);
+        System.out.println("-------------service impl blackList " + userId);
         return this.userDao.selectUseBlackList(userId);
     }
     public List<VideoInfo> getAllVideo(String type){
