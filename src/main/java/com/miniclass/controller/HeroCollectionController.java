@@ -1,18 +1,13 @@
 package com.miniclass.controller;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import com.miniclass.entity.Content;
 import com.miniclass.entity.UserBasic;
-import com.miniclass.entity.VideoInfo;
 import com.miniclass.enums.ShareTypeEnum;
-import com.miniclass.service.RankService;
 import com.miniclass.service.UserBasicService;
 import com.miniclass.service.UserShareService;
 import com.miniclass.util.CommonFuncUtil;
-import com.miniclass.util.Constant;
-import com.miniclass.vo.VideoInfoVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by shuaizhiguo on 2016/12/28.

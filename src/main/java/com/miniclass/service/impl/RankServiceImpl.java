@@ -7,8 +7,6 @@ import com.miniclass.entity.UserBasic;
 import com.miniclass.dao.UserBasicDao;
 import com.miniclass.service.RankService;
 
-import java.util.List;
-
 /**
  * Created by shuaizhiguo on 2016/4/11.
  */

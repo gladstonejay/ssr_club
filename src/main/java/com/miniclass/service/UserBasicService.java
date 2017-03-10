@@ -4,8 +4,6 @@ import com.miniclass.entity.UserBasic;
 import com.miniclass.entity.VideoInfo;
 import com.miniclass.entity.UserRecord;
 
-import javax.xml.registry.infomodel.User;
-import java.util.Date;
 import java.util.List;
 
 /**
