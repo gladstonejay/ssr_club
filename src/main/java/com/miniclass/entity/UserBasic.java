@@ -9,6 +9,10 @@ public class UserBasic {
 
     private String userNname;
 
+    private String realName;
+
+    private String email;
+
     private String userType;
 
     private String password;
@@ -47,6 +51,22 @@ public class UserBasic {
 
     public void setUserNname(String userNname) {
         this.userNname = userNname == null ? null : userNname.trim();
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName == null ? null : realName.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
     public String getUserType() {
