@@ -28,11 +28,18 @@
             <%--</c:otherwise></c:choose>--%>
         <%@ include file="../common/bottom3.jsp" %>
         <div class="content">
-            <div class="item-media">
-                <div valign="bottom" class="card-header color-white no-border no-padding">
-                <img class='card-cover' src="../../../static/imags/content/content-big${content.type}-${content.imageName}.png" >
+            <c:if test="${content.imageName.length() > 3 }">
+                <div id="wktvideo">
+                <iframe width="100%" height="250" src="http://player.youku.com/embed/${content.imageName}"  frameborder="0" allowfullscreen="true"></iframe>
+                </div>
+            </c:if>
+            <c:if test="${content.imageName.length() < 3  }">
+                <div class="item-media">
+                    <div valign="bottom" class="card-header color-white no-border no-padding">
+                    <img class='card-cover' src="../../../static/imags/content/content-big${content.type}-${content.imageName}.png" >
                     </div>
-            </div>
+                </div>
+            </c:if>
         </div>
     </div>
 </div>
