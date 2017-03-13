@@ -96,4 +96,9 @@ public class UserBasicServiceImpl implements UserBasicService{
 
         return this.userRecordDao.getUserExamCount(userId);
     }
+
+    public int updateRealNameAndLocationByUserId(String userId,String realName,String location){
+
+        return userDao.updateRealNameAndLocationByUserId(userId,realName,location);
+    }
 }

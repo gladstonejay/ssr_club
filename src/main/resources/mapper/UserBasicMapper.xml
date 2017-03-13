@@ -201,4 +201,10 @@
   <select id="getUserById" parameterType="java.lang.String" resultMap="BaseResultMap">
     SELECT * FROM user_basic where user_id = #{userId,jdbcType=VARCHAR};
   </select>
+  <select id="updateRealNameAndLocationByUserId" resultType="java.lang.Integer">
+    UPDATE user_basic
+    set real_name = #{realName},
+    location = #{location}
+    where user_id = #{userId}
+  </select>
 </mapper>

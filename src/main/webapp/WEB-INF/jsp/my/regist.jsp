@@ -55,6 +55,43 @@
                     </li>
                     <li>
                         <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">姓名</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="请输入您的真实姓名" id="realName" name="realName" value="${ubVo.realName}"  data-validate="realName" data-describedby="realName-description">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <c:if test="${userType == '1' || userType == '2'}">
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">店铺名称</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="请输入您的店铺名称" id="location1" name="location1" value="${ubVo.locationDetail}"  data-validate="location1" data-describedby="location1-description">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </c:if>
+                    <c:if test="${userType == '4' }">
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">经销商名称</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="请输入您的经销商名称" id="location4" name="location4" value="${ubVo.locationDetail}"  data-validate="location1" data-describedby="location4-description">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </c:if>
+                    <li>
+                        <div class="item-content">
                             <div class="item-media"><i class="icon icon-form-password"></i></div>
                             <div class="item-inner">
                                 <div class="item-title label">密码</div>
@@ -108,8 +145,7 @@
         </div>
     </div>
 </div>
-
-
+<jsp:include page="../common/city.jsp"></jsp:include>
 <script type="text/javascript">
 
     $(function () {
@@ -133,6 +169,50 @@
                 descriptions:{
                     required : '<div class="field-invalidmsg">请输入昵称</div>',
                     pattern : '<div class="field-invalidmsg">昵称请输入2-24位字符：支持中文、英文、数字、“_”</div>',
+                    valid : '<div class="field-validmsg">正确</div>'
+                }
+            },
+            realName:{
+                required : true,
+                pattern :  /^\S{1,24}(?!_)(?!.*?_$)[\u4e00-\u9fa5a-zA-Z0-9_]+$/,
+                each:function(){
+                },
+                descriptions:{
+                    required : '<div class="field-invalidmsg">请输入姓名</div>',
+                    pattern : '<div class="field-invalidmsg">请输入正确的姓名</div>',
+                    valid : '<div class="field-validmsg">正确</div>'
+                }
+            },
+            location1:{
+                required : true,
+                pattern :  /^\S{1,24}(?!_)(?!.*?_$)[\u4e00-\u9fa5a-zA-Z0-9_]+$/,
+                each:function(){
+                },
+                descriptions:{
+                    required : '<div class="field-invalidmsg">请输入门店名称</div>',
+                    pattern : '<div class="field-invalidmsg">请输入正确的门店名称</div>',
+                    valid : '<div class="field-validmsg">正确</div>'
+                }
+            },
+            location3:{
+                required : true,
+                pattern :  /^\S{1,24}(?!_)(?!.*?_$)[\u4e00-\u9fa5a-zA-Z0-9_]+$/,
+                each:function(){
+                },
+                descriptions:{
+                    required : '<div class="field-invalidmsg">请输入负责区域</div>',
+                    pattern : '<div class="field-invalidmsg">请输入正确的负责区域</div>',
+                    valid : '<div class="field-validmsg">正确</div>'
+                }
+            },
+            location4:{
+                required : true,
+                pattern :  /^\S{1,24}(?!_)(?!.*?_$)[\u4e00-\u9fa5a-zA-Z0-9_]+$/,
+                each:function(){
+                },
+                descriptions:{
+                    required : '<div class="field-invalidmsg">请输入经销商名称</div>',
+                    pattern : '<div class="field-invalidmsg">请输入正确经销商名称</div>',
                     valid : '<div class="field-validmsg">正确</div>'
                 }
             },
@@ -193,6 +273,15 @@
                 },
                 userNname:{
                     required : '请输入昵称'
+                },
+                realName:{
+                    required : '请输入姓名'
+                },
+                location1:{
+                    required : '请输入店铺名称'
+                },
+                location4:{
+                    required : '请输入经销商名称'
                 },
                 password:{
                     required : '请输入密码'

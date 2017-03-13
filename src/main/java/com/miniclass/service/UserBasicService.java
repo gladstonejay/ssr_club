@@ -39,5 +39,7 @@ public interface UserBasicService {
 
     public UserBasic getUserById(String userId);
 
+    public int updateRealNameAndLocationByUserId(String userId,String realName,String location);
+
 
 }

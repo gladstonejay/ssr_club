@@ -23,6 +23,26 @@ public class UserBasicVo extends Vo {
 
     private Date registTime;
 
+    private String locationDetail;
+
+    private String realName;
+
+    public String getLocationDetail() {
+        return locationDetail;
+    }
+
+    public void setLocationDetail(String locationDetail) {
+        this.locationDetail = locationDetail;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
     public Integer getId() {
         return id;
     }

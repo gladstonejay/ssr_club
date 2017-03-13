@@ -91,16 +91,6 @@ public class MyController extends KaptchaExtend {
         return model;
     }
 
-    /**
-     * 经销商负责区域界面
-     */
-    @RequestMapping(value="/dealerLocation")
-    public ModelAndView dealerLocation(){
-
-        ModelAndView model = new ModelAndView("/my/dealerLocation");
-
-        return model;
-    }
 
     /**
      * 选择区域界面
@@ -134,6 +124,14 @@ public class MyController extends KaptchaExtend {
         }catch (Exception e){
             e.printStackTrace();
         }
+        //补全信息入口 ，20170311
+        if (userBasic.getLocation() == null || userBasic.getLocation().length() == 0){
+            ModelAndView fill = new ModelAndView("/my/fulfillBasicInfo");
+
+            fill.addObject("userType" , userBasic.getUserType());
+            return fill;
+        }
+
         UserShowInfoVo userShowInfoVo = new UserShowInfoVo();
 
         if (userBasic.getUserType().equals("1") || userBasic.getUserType().equals("2")){
@@ -264,6 +262,30 @@ public class MyController extends KaptchaExtend {
     }
 
     /**
+     * 销售选择区域验证
+     */
+    @RequestMapping(value = "/saleLocationCheck")
+    public ModelAndView saleLocationCheck(HttpServletRequest request){
+
+        String location = request.getParameter("location");
+        String userType = request.getParameter("userType");
+        log.info("--------------userT" + userType);
+        ModelAndView error = new ModelAndView("/my/saleLocation");
+        ModelAndView regist = new ModelAndView("/my/regist");
+
+        if (location == null || location.length() == 0) {
+            error.addObject("errorNname"," 请选择区域");
+            error.addObject("userType",userType);
+            return error;
+        }
+        else{
+            regist.addObject("location",location);
+            regist.addObject("userType",userType);
+            return regist;
+        }
+    }
+
+    /**
      * 选择身份验证
      */
     @RequestMapping(value = "/typeCheck")
@@ -272,6 +294,7 @@ public class MyController extends KaptchaExtend {
         String type = request.getParameter("type");
         ModelAndView error = new ModelAndView("/my/chooseType");
         ModelAndView location = new ModelAndView("/my/chooseLocation");
+        ModelAndView saleLocation = new ModelAndView("/my/saleLocation");
         ModelAndView regist = new ModelAndView("/my/regist");
 
         if (type == null || type.length() == 0) {
@@ -291,14 +314,16 @@ public class MyController extends KaptchaExtend {
                 location.addObject("location",location);
 
                 return location;
-            }
-            else{
+            } else if (type.equals("雀巢销售")){
+                int userType = 3;
+
+                saleLocation.addObject("userType", userType);
+                saleLocation.addObject("saleLocation", saleLocation);
+
+                return saleLocation;
+            } else {
                 int userType = 4;
-                if (type.equals("雀巢销售")){
-                    userType = 3;
-                }else{
-                    userType = 4;
-                }
+
                 regist.addObject("userType", userType);
                 regist.addObject("regist",regist);
 
@@ -317,9 +342,9 @@ public class MyController extends KaptchaExtend {
         ModelAndView errorModel = new ModelAndView("my/regist");
         response.setContentType("application/json;charset=UTF-8");
 
-        String loca= request.getParameter("location");
+        String local= request.getParameter("location");
         String userType = request.getParameter("userType");
-        String[] location = loca.split(" ");
+        String[] location = local.split(" ");
         log.info("用户注册的昵称是 " + ubVo.getUserNname());
 
 
@@ -333,7 +358,7 @@ public class MyController extends KaptchaExtend {
         }
         if ( (a == 1) || (b==1) ){
             errorModel.addObject("userType",userType);
-            errorModel.addObject("location",loca);
+            errorModel.addObject("location",local);
             return errorModel;
         }
         else{
@@ -346,15 +371,21 @@ public class MyController extends KaptchaExtend {
             UserBasic userBasic = new UserBasic();
             userBasic.setUserId(ubVo.getUserId());
             userBasic.setUserNname((ubVo.getUserNname()));
+            userBasic.setRealName(ubVo.getRealName());
             userBasic.setPassword(newstr);
             userBasic.setUserType(userType);
             userBasic.setStatus(0);
             if (userType.equals("1") || userType.equals("2")){
+                userBasic.setLocation(request.getParameter("location1"));
                 userBasic.setProvince(location[0]);
                 userBasic.setCity(location[1]);
                 if(location.length==3){
                     userBasic.setCounty(location[2]);
                 }
+            }else if (userType.equals("3")){
+                userBasic.setLocation(request.getParameter("location"));
+            }else{
+                userBasic.setLocation(request.getParameter("location4"));
             }
             try {
                 userBasicService.insertNewUser(userBasic);
@@ -364,6 +395,78 @@ public class MyController extends KaptchaExtend {
             this.CookieSave(userBasic,response,request);
 
             return new ModelAndView("redirect:/my/my.j");
+        }
+    }
+
+
+    @RequestMapping(value = "/fillInfo")
+    public ModelAndView fillInfo(  HttpServletRequest request, HttpServletResponse response){
+
+        String location = null;
+        String realName = request.getParameter("realName");
+        String userType = request.getParameter("userType");
+        if (userType.equals("1") || userType.equals("2")) {
+            location = request.getParameter("location1");
+        }else if ( userType.equals("3") ){
+            location = request.getParameter("location3");
+        }else{
+            location = request.getParameter("location4");
+        }
+        log.info("--------------userT" + userType);
+        ModelAndView error = new ModelAndView("/my/fulfillBasicInfo");
+        ModelAndView my = new ModelAndView("/my/my");
+
+        if (location == null || location.length() == 0 || realName == null || realName.length() == 0) {
+            error.addObject("errorNname"," 请补充必填信息");
+            error.addObject("userType",userType);
+            return error;
+        }
+        else{
+
+            HttpSession session = request.getSession();
+            String userId = new String();
+            userId = (String)session.getAttribute(CURRENT_USER);
+            log.info("-------------------userid is " + userId);
+            //String userId = this.GetUserIdByCookie(request);
+            try {
+                userBasicService.updateRealNameAndLocationByUserId(userId,realName,location);
+            }catch (Exception e){
+                log.error(e.getLocalizedMessage());
+            }
+            UserBasic userBasic = null;
+            try{
+                userBasic = this.userBasicService.getUserById(userId);
+                if ( userBasic == null || userBasic.getUserId().length() == 0){
+                    return new ModelAndView("redirect:/my/login.j");
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            UserShowInfoVo userShowInfoVo = new UserShowInfoVo();
+
+            if (userBasic.getUserType().equals("1") || userBasic.getUserType().equals("2")){
+                userShowInfoVo.setScore(scoreService.getUserScoreByUserId(userId));
+            }
+            userShowInfoVo.setUserNickName(userBasic.getUserNname());
+            userShowInfoVo.setUserType(UserTypeEnum.getName(Integer.parseInt(userBasic.getUserType())));
+            userShowInfoVo.setUserTypeEnum(userBasic.getUserType());
+
+            List<String> ranks = scoreService.getTop100User();
+
+            //String [] rankString=(String [])ranks.toArray();
+            //Integer rankInt = Arrays.asList(rankString).indexOf(userId);
+            Integer rankInt = ranks.indexOf(userId);
+            if (rankInt == -1){
+                userShowInfoVo.setRank("100+");
+            }else{
+                rankInt += 1;
+                userShowInfoVo.setRank(rankInt.toString());
+            }
+
+            my.addObject("userShowInfo",userShowInfoVo);
+            my.addObject("userId",userId);
+
+            return my;
         }
     }
 

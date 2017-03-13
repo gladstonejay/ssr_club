@@ -45,6 +45,13 @@ public class HeroCollectionController {
         }catch (Exception e){
             log.error("群英汇获取数据出现异常");
         }
+        //补全信息入口 ，20170311
+        if (userBasic.getLocation() == null || userBasic.getLocation().length() == 0){
+            ModelAndView fill = new ModelAndView("/my/fulfillBasicInfo");
+
+            fill.addObject("userType" , userBasic.getUserType());
+            return fill;
+        }
 
         model.addObject("userBasic", userBasic);
         model.addObject("content4", content4);

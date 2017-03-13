@@ -1,6 +1,7 @@
 package com.miniclass.dao;
 
 import com.miniclass.entity.UserBasic;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserBasicDao {
 
@@ -25,4 +26,6 @@ public interface UserBasicDao {
     Integer selectUseBlackList(String userId);
 
     public UserBasic getUserById(String userId);
+
+    public int updateRealNameAndLocationByUserId(@Param("userId")String userId, @Param("realName")String realName,@Param("location")String location);
 }

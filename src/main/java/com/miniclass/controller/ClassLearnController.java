@@ -96,7 +96,14 @@ public class ClassLearnController {
         }else{
             UserBasic userBasic = null;
             try {
-                 userBasic = userService.getUserById(userId);
+                userBasic = userService.getUserById(userId);
+                //补全信息入口 ，20170311
+                if (userBasic.getLocation() == null || userBasic.getLocation().length() == 0){
+                    ModelAndView fill = new ModelAndView("/my/fulfillBasicInfo");
+
+                    fill.addObject("userType" , userBasic.getUserType());
+                    return fill;
+                }
                 List<VideoInfo> videoInfoList = null;
                 if (userBasic.getUserType().equals("2".toString()))
                 {
