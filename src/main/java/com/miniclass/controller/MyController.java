@@ -324,10 +324,10 @@ public class MyController extends KaptchaExtend {
             } else {
                 int userType = 4;
 
-                regist.addObject("userType", userType);
-                regist.addObject("regist",regist);
+                location.addObject("userType", userType);
+                location.addObject("location",location);
 
-                return regist;
+                return location;
             }
         }
     }
@@ -385,6 +385,11 @@ public class MyController extends KaptchaExtend {
             }else if (userType.equals("3")){
                 userBasic.setLocation(request.getParameter("location"));
             }else{
+                userBasic.setProvince(location[0]);
+                userBasic.setCity(location[1]);
+                if(location.length==3){
+                    userBasic.setCounty(location[2]);
+                }
                 userBasic.setLocation(request.getParameter("location4"));
             }
             try {
@@ -403,6 +408,7 @@ public class MyController extends KaptchaExtend {
     public ModelAndView fillInfo(  HttpServletRequest request, HttpServletResponse response){
 
         String location = null;
+        String local = null;
         String realName = request.getParameter("realName");
         String userType = request.getParameter("userType");
         if (userType.equals("1") || userType.equals("2")) {
@@ -411,6 +417,7 @@ public class MyController extends KaptchaExtend {
             location = request.getParameter("location3");
         }else{
             location = request.getParameter("location4");
+            local= request.getParameter("location5");
         }
         log.info("--------------userT" + userType);
         ModelAndView error = new ModelAndView("/my/fulfillBasicInfo");
@@ -428,8 +435,24 @@ public class MyController extends KaptchaExtend {
             userId = (String)session.getAttribute(CURRENT_USER);
             log.info("-------------------userid is " + userId);
             //String userId = this.GetUserIdByCookie(request);
+            String pro = "blank";
+            String city = "blank";
+            String county = "blank";
+            if (userType.equals("4")){
+
+                String[] locationArray = local.split(" ");
+                pro = locationArray[0];
+                city = locationArray[1];
+                if(locationArray.length==3){
+                    county = locationArray[2];
+                }
+            }
             try {
-                userBasicService.updateRealNameAndLocationByUserId(userId,realName,location);
+                if ( userType.equals("4")){
+                    userBasicService.updateUserType4Info(userId,realName,pro,city,county,location);
+                }else{
+                    userBasicService.updateRealNameAndLocationByUserId(userId,realName,location);
+                }
             }catch (Exception e){
                 log.error(e.getLocalizedMessage());
             }

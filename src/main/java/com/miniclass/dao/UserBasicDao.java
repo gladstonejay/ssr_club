@@ -28,4 +28,6 @@ public interface UserBasicDao {
     public UserBasic getUserById(String userId);
 
     public int updateRealNameAndLocationByUserId(@Param("userId")String userId, @Param("realName")String realName,@Param("location")String location);
+
+    public int updateUserType4Info(@Param("userId")String userId,@Param("realName")String realName,@Param("province")String pro,@Param("city")String city,@Param("county")String county,@Param("location")String location);
 }

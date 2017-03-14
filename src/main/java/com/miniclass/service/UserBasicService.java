@@ -41,5 +41,7 @@ public interface UserBasicService {
 
     public int updateRealNameAndLocationByUserId(String userId,String realName,String location);
 
+    public int updateUserType4Info(String userId,String realName,String pro,String city,String county,String location);
+
 
 }

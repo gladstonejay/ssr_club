@@ -62,11 +62,21 @@
                                 <div class="item-content">
                                     <div class="item-media"><i class="icon icon-form-email"></i></div>
                                     <div class="item-inner">
+                                        <div class="item-title label">请选择区域</div>
+                                        <div class="item-input">
+                                            <input  type="text" placeholder="选择区域" id="location5" name="location5" readonly="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                    <div class="item-inner">
                                         <div class="item-title label">经销商名称</div>
                                         <div class="item-input">
                                             <input type="text" placeholder="请输入您的经销商名称" id="location4" name="location4"
-                                                   value="${location4}" data-validate="location1"
-                                                   data-describedby="location4-description">
+                                                   value="${location4}" >
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +125,6 @@
                 {
                     textAlign: 'center',
                     values: ['北二', '北三', '西北']
-                    //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
                 },
                 {
                     textAlign: 'center',
@@ -129,4 +138,16 @@
         });
     })
 </script>
+
+<script>
+    $(function () {
+        $("#location5").cityPicker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+    <button class="button button-link pull-right close-picker">确定</button>\
+    <h1 class="title">请选择区域</h1>\
+    </header>'
+        });
+    })
+</script>
+
 </html>

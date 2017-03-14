@@ -10,7 +10,7 @@
 <nav class="bar bar-tab">
     <a class="tab-item " href="/classLearn/showUserClass.j" external>
         <span class="icon" ><img src="../../../static/imags/tab/tab12.png" width="28" ></span>
-        <span class="tab-label"><font color="999999">精英讲堂</font></span>
+        <span class="tab-label"><font color="999999">精英课堂</font></span>
     </a>
     <a class="tab-item active" href="/heroCollection/showHero.j" external>
         <span class="icon"><img src="../../../static/imags/tab/tab22-active.png" width="40" ></span>

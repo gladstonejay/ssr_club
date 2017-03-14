@@ -101,4 +101,9 @@ public class UserBasicServiceImpl implements UserBasicService{
 
         return userDao.updateRealNameAndLocationByUserId(userId,realName,location);
     }
+
+    public int updateUserType4Info(String userId,String realName,String pro,String city,String county,String location){
+
+        return userDao.updateUserType4Info(userId, realName, pro, city, county, location);
+    }
 }

@@ -207,4 +207,14 @@
     location = #{location}
     where user_id = #{userId}
   </select>
+
+  <select id="updateUserType4Info" resultType="java.lang.Integer">
+    UPDATE user_basic
+    set real_name = #{realName},
+    province = #{province},
+    city = #{city},
+    county = #{county},
+    location = #{location}
+    where user_id = #{userId}
+  </select>
 </mapper>
