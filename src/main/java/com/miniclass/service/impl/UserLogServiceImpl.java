@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * Created by shuaizhiguo on 2017/3/15.
  */
@@ -29,7 +31,7 @@ public class UserLogServiceImpl implements UserLogService{
         userLogRecord.setUserType(userType);
         userLogRecord.setContentId(contentId);
         userLogRecord.setType(contentTYpe);
-
+        userLogRecord.setCreateTime(new Date());
         try {
             dao.insertSelective(userLogRecord);
         }catch (Exception e){
