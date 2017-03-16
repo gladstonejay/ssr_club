@@ -6,6 +6,7 @@ import com.miniclass.entity.Content;
 import com.miniclass.entity.UserBasic;
 import com.miniclass.enums.ShareTypeEnum;
 import com.miniclass.service.UserBasicService;
+import com.miniclass.service.UserLogService;
 import com.miniclass.service.UserShareService;
 import com.miniclass.util.CommonFuncUtil;
 import org.slf4j.Logger;
@@ -29,6 +30,8 @@ public class HeroCollectionController {
     private UserBasicService userService;
     @Autowired
     private UserShareService userShareService;
+    @Autowired
+    private UserLogService userLogService;
 
 
     @RequestMapping(value="/showHero")
@@ -72,6 +75,8 @@ public class HeroCollectionController {
         try{
             content = userShareService.getContentByTypeAndItem(type, id);
             userBasic = userService.getUserById(userId);
+            userLogService.logUser(userId, userBasic.getUserType(), type, id);
+
         } catch (Exception e){
             log.error("【群英汇获取数据出现异常】: 类型是 ："  + type + " id是 " + id);
         }

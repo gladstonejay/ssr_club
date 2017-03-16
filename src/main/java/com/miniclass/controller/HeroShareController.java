@@ -4,6 +4,7 @@ import com.miniclass.entity.Content;
 import com.miniclass.entity.UserBasic;
 import com.miniclass.enums.ShareTypeEnum;
 import com.miniclass.service.UserBasicService;
+import com.miniclass.service.UserLogService;
 import com.miniclass.service.UserShareService;
 import com.miniclass.util.CommonFuncUtil;
 import org.slf4j.Logger;
@@ -29,6 +30,8 @@ public class HeroShareController {
     private UserShareService userShareService;
     @Autowired
     private UserBasicService userBasicService;
+    @Autowired
+    private UserLogService userLogService;
 
     @RequestMapping(value="/showShare")
     public ModelAndView showRank(HttpServletRequest request) {
@@ -71,6 +74,8 @@ public class HeroShareController {
         try{
             content = userShareService.getContentByTypeAndItem(type, id);
             userBasic = userBasicService.getUserById(userId);
+            userLogService.logUser(userId, userBasic.getUserType(), type, id);
+
         } catch (Exception e){
             log.error("【精英分享获取详细失败】: 类型是 ："  + type + " id是 " + id);
         }

@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.miniclass.entity.*;
-import com.miniclass.service.ReviewService;
-import com.miniclass.service.ScoreService;
-import com.miniclass.service.UserShareService;
+import com.miniclass.service.*;
 import com.miniclass.util.CommonFuncUtil;
 import com.miniclass.util.Constant;
 import com.miniclass.util.DateUtil;
@@ -20,7 +18,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.miniclass.service.UserBasicService;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -46,6 +43,8 @@ public class ClassLearnController {
     private UserShareService userShareService;
     @Autowired
     private ScoreService scoreService;
+    @Autowired
+    private UserLogService userLogService;
 
     /**6
      * 本月课程列表
@@ -230,6 +229,7 @@ public class ClassLearnController {
 
         String userType = userService.getUserById(userId).getUserType();
 
+        userLogService.logUser(userId, userType, 8, videoId);
         if (userType.equals("1") || userType.equals("2") ) {
 
             UserRecord userRecord = new UserRecord();
@@ -286,7 +286,7 @@ public class ClassLearnController {
         log.info("---------------最终的用户名字是：" + userId);
 
         String userType = userService.getUserById(userId).getUserType();
-
+        userLogService.logUser(userId, userType, 9, id);
         if (userType.equals("1") || userType.equals("2") ) {
 
             UserRecord userRecord = new UserRecord();
@@ -400,6 +400,7 @@ public class ClassLearnController {
 
         String userType = userService.getUserById(userId).getUserType();
 
+        userLogService.logUser(userId, userType, 10, id);
         if (userType.equals("1") || userType.equals("2") ) {
 
             UserRecord userRecord = new UserRecord();

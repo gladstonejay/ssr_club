@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
+import com.miniclass.entity.UserLogRecord;
 import com.miniclass.entity.UserScoreRank;
 import com.miniclass.enums.UserTypeEnum;
 import com.miniclass.service.ScoreService;
+import com.miniclass.service.UserLogService;
 import com.miniclass.vo.RankListVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +48,8 @@ public class MyController extends KaptchaExtend {
     private UserBasicService userBasicService;
     @Autowired
     private ScoreService scoreService;
+    @Autowired
+    private UserLogService userLogService;
 
     /**
      * 登录界面
@@ -137,6 +141,7 @@ public class MyController extends KaptchaExtend {
         if (userBasic.getUserType().equals("1") || userBasic.getUserType().equals("2")){
             userShowInfoVo.setScore(scoreService.getUserScoreByUserId(userId));
         }
+        userLogService.logUser(userId, userBasic.getUserType(), 11, 0);
         userShowInfoVo.setUserNickName(userBasic.getUserNname());
         userShowInfoVo.setUserType(UserTypeEnum.getName(Integer.parseInt(userBasic.getUserType())));
         userShowInfoVo.setUserTypeEnum(userBasic.getUserType());
