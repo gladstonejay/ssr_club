@@ -6,7 +6,6 @@ import com.miniclass.entity.UserScoreRank;
 import com.miniclass.entity.UserScoreRecord;
 import com.miniclass.enums.LearnTypeEnum;
 import com.miniclass.service.ScoreService;
-import com.miniclass.util.CommonFuncUtil;
 import com.miniclass.util.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -112,7 +111,7 @@ public class ScoreServiceImpl implements ScoreService {
      * 考试分数 实际 满分10分
      */
     @Override
-    public void addTScoreByExam(String userId) {
+    public void addTScoreByExam(String userId, Integer score) {
         String dateString = DateUtil.format(new Date(), DateUtil.DATE_FORMAT_DAY_SHORT);
         try {
             UserScoreRecord userScoreRecord = new UserScoreRecord();
@@ -125,6 +124,7 @@ public class ScoreServiceImpl implements ScoreService {
             userScoreRecord.setScore(10);
             userScoreRecord.setType(LearnTypeEnum.getName(2));
             userScoreRecord.setUserId(userId);
+            userScoreRecord.setExamScore(score);
             userScoreRecordDao.insertSelective(userScoreRecord);
 
             int recordCount = userScoreRankDao.getUserRecordCountByUserId(userId);

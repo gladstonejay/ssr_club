@@ -16,3 +16,4 @@
 
 <link rel="stylesheet" href="${ctx}/static/css/sm.min.css">
 <link rel="stylesheet" href="${ctx}/static/css/sm-extend.min.css">
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>

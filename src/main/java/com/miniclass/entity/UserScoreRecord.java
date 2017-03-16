@@ -17,6 +17,8 @@ public class UserScoreRecord {
 
     private String type;
 
+    private Integer examScore;
+
     public Integer getId() {
         return id;
     }
@@ -79,5 +81,13 @@ public class UserScoreRecord {
 
     public void setType(String type) {
         this.type = type == null ? null : type.trim();
+    }
+
+    public Integer getExamScore() {
+        return examScore;
+    }
+
+    public void setExamScore(Integer examScore) {
+        this.examScore = examScore;
     }
 }

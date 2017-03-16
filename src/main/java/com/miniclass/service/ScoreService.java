@@ -26,7 +26,7 @@ public interface ScoreService {
     /**
      * 考试分数 实际 满分10分
      */
-    public void addTScoreByExam (String userId);
+    public void addTScoreByExam (String userId, Integer score);
 
 
     /**

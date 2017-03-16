@@ -414,7 +414,7 @@ public class ClassLearnController {
             Integer count = this.userService.isRecorded(userRecord);
             if (count == 0) {
                 this.userService.insertUserRecord(userRecord);
-                scoreService.addTScoreByExam(userId);
+                scoreService.addTScoreByExam(userId,score);
             }
         }
         return modelAndView;
