@@ -19,6 +19,10 @@ public class UserScoreRecord {
 
     private Integer examScore;
 
+    private Integer examType;
+
+    private Integer examId;
+
     public Integer getId() {
         return id;
     }
@@ -89,5 +93,21 @@ public class UserScoreRecord {
 
     public void setExamScore(Integer examScore) {
         this.examScore = examScore;
+    }
+
+    public Integer getExamType() {
+        return examType;
+    }
+
+    public void setExamType(Integer examType) {
+        this.examType = examType;
+    }
+
+    public Integer getExamId() {
+        return examId;
+    }
+
+    public void setExamId(Integer examId) {
+        this.examId = examId;
     }
 }

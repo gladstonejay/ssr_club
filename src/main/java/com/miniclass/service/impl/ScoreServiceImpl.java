@@ -111,7 +111,7 @@ public class ScoreServiceImpl implements ScoreService {
      * 考试分数 实际 满分10分
      */
     @Override
-    public void addTScoreByExam(String userId, Integer score) {
+    public void addTScoreByExam(String userId, Integer score, Integer type, Integer examId) {
         String dateString = DateUtil.format(new Date(), DateUtil.DATE_FORMAT_DAY_SHORT);
         try {
             UserScoreRecord userScoreRecord = new UserScoreRecord();
@@ -125,6 +125,8 @@ public class ScoreServiceImpl implements ScoreService {
             userScoreRecord.setType(LearnTypeEnum.getName(2));
             userScoreRecord.setUserId(userId);
             userScoreRecord.setExamScore(score);
+            userScoreRecord.setExamType(type);
+            userScoreRecord.setExamId(examId);
             userScoreRecordDao.insertSelective(userScoreRecord);
 
             int recordCount = userScoreRankDao.getUserRecordCountByUserId(userId);

@@ -18,6 +18,5 @@ public interface UserScoreRecordDao {
 
     int updateByPrimaryKey(UserScoreRecord record);
 
-
     public int getUserHaveTodayScoreByType(@Param("userId")String userId , @Param("getTime")String dateString , @Param("type")String type);
 }

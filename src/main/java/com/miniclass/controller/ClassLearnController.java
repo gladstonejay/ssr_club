@@ -412,11 +412,15 @@ public class ClassLearnController {
             Calendar cal = Calendar.getInstance();
             Integer month = cal.get(Calendar.MONTH) + 1;
             userRecord.setMonth(month);
+            //取消对考试的限制 20170320
+            scoreService.addTScoreByExam(userId,score,type,id);
+            /*
             Integer count = this.userService.isRecorded(userRecord);
             if (count == 0) {
                 this.userService.insertUserRecord(userRecord);
-                scoreService.addTScoreByExam(userId,score);
+                scoreService.addTScoreByExam(userId,score,type,id);
             }
+            */
         }
         return modelAndView;
     }
