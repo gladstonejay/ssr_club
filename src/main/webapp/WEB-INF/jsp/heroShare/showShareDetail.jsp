@@ -9,12 +9,32 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<html>
+<!DOCTYPE html>
 <head>
 
     <jsp:include page="../common/head.jsp"></jsp:include>
     <script>
+//        document.addEventListener('taphold', function(e) {
+//            e.preventDefault();
+//        });
+//        function onBodyLoad() {
+//            $("img").bind('taphold', function(event) {
+//                event.preventDefault();
+//            });
+//        }
+//        $('img').bind('contextmenu', function(e) {
+//            e.preventDefault();
+//        })
+        $(window).on('success',function(event, options){
+            that.$page.removeClass('animations');
+            that.$page.eq(opts.pageNext).addClass('animations');
 
+            alert("before")
+        that.$page.eq(opts.pageNow).find('.down-arrow').click();
+    alert("after")
+    )};
+    </script>
+    <script>
         /*
          * 注意：
          * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
@@ -45,21 +65,19 @@
         });
         wx.ready(function(){
             wx.hideOptionMenu();
+            wx.hideMenuItems({
+                menuList: ["menuItem:share:appMessage"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+            });
         })
     </script>
 
+    <style type="text/css">　　
+    body{-webkit-user-select: none;-webkit-touch-callout: none;}　　
+    </style>　
 </head>
 <body>
 <div class="page-group">
     <div class="page page-current">
-
-        <%--<c:choose>--%>
-            <%--<c:when test="${userBasic.userType == '3' ||  userBasic.userType == '4'}">--%>
-                <%--<%@ include file="../common/bottom21.jsp" %>--%>
-            <%--</c:when>--%>
-            <%--<c:otherwise>--%>
-                <%--<%@ include file="../common/bottom3.jsp" %>--%>
-            <%--</c:otherwise></c:choose>--%>
         <%@ include file="../common/bottom3.jsp" %>
         <div class="content">
             <c:if test="${content.imageName.length() > 3 }">
@@ -70,7 +88,7 @@
             <c:if test="${content.imageName.length() < 3  }">
                 <div class="item-media">
                     <div valign="bottom" class="card-header color-white no-border no-padding">
-                    <img class='card-cover' src="../../../static/imags/content/content-big${content.type}-${content.imageName}.png" >
+                        <img class='card-cover'  src="../../../static/imags/content/content-big${content.type}-${content.imageName}.png" >
                     </div>
                 </div>
             </c:if>
