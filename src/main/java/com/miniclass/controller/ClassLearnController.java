@@ -126,6 +126,12 @@ public class ClassLearnController {
                     videoInfoVo.setTimestamp(DateUtil.format(videoInfo.getTimestamp(),DateUtil.DATE_FORMAT_DAY));
                     videoInfoVo.setWriter(videoInfo.getWriter());
                     videoInfoVo.setStatus(videoInfo.getStatus());
+                    Integer watchNo = userLogService.getUserWatchNo(userId, videoInfo.getOrderId());
+                    if (watchNo > 0){
+                        videoInfoVo.setWatched(1);
+                    }else{
+                        videoInfoVo.setWatched(0);
+                    }
                     model.addObject("month",videoInfo.getMonth());
                     videoInfoVos.add(videoInfoVo);
                 }
@@ -400,7 +406,11 @@ public class ClassLearnController {
 
         String userType = userService.getUserById(userId).getUserType();
 
-        userLogService.logUser(userId, userType, 10, id);
+        Integer examType = 10;
+        if (type == 2){
+            examType = 12;
+        }
+        userLogService.logUser(userId, userType, examType, id);
         if (userType.equals("1") || userType.equals("2") ) {
 
             UserRecord userRecord = new UserRecord();

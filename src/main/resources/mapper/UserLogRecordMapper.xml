@@ -103,4 +103,10 @@
       content_id = #{contentId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getUserWatchNo" resultType="java.lang.Integer">
+    select count(*) from user_log_record
+    WHERE user_id = #{userId}
+    AND content_id = #{contentId}
+  </select>
 </mapper>

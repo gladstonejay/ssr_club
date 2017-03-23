@@ -106,10 +106,10 @@
                                                             <div class="item-subtitle">
                                                                 <img src="../../../static/imags/heroShare/time.png" width="16"> <span>${item.timestamp}</span>
                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <c:if test="${item.status=='1'}">
+                                                                <c:if test="${item.watched=='1'}">
                                                                     <img src="../../../static/imags/classLearn/class_done.png" width="48">
                                                                 </c:if>
-                                                                <c:if test="${item.status=='2'}">
+                                                                <c:if test="${item.watched=='0'}">
                                                                     <img src="../../../static/imags/classLearn/class_undo.png" width="48">
                                                                 </c:if>
                                                             </div>

@@ -29,6 +29,16 @@ public class VideoInfoVo  extends Vo  {
 
     private String writer;
 
+    public Integer getWatched() {
+        return watched;
+    }
+
+    public void setWatched(Integer watched) {
+        this.watched = watched;
+    }
+
+    private Integer watched;
+
     public Integer getStatus() {
         return status;
     }
