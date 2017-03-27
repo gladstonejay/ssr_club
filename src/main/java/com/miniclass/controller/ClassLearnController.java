@@ -126,12 +126,13 @@ public class ClassLearnController {
                     videoInfoVo.setTimestamp(DateUtil.format(videoInfo.getTimestamp(),DateUtil.DATE_FORMAT_DAY));
                     videoInfoVo.setWriter(videoInfo.getWriter());
                     videoInfoVo.setStatus(videoInfo.getStatus());
-                    Integer watchNo = userLogService.getUserWatchNo(userId, videoInfo.getOrderId());
+                    Integer watchNo = userLogService.getUserWatchNo(userId, videoInfo.getOrderId(), 8);
                     if (watchNo > 0){
                         videoInfoVo.setWatched(1);
                     }else{
                         videoInfoVo.setWatched(0);
                     }
+                    log.info("-----------------------watched = " + videoInfoVo.getWatched());
                     model.addObject("month",videoInfo.getMonth());
                     videoInfoVos.add(videoInfoVo);
                 }

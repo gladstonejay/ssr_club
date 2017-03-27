@@ -40,11 +40,11 @@ public class UserLogServiceImpl implements UserLogService{
     }
 
     @Override
-    public Integer getUserWatchNo(String userId, Integer videoId){
+    public Integer getUserWatchNo(String userId, Integer videoId, Integer type){
 
         Integer countNo = 0;
         try{
-            countNo = dao.getUserWatchNo(userId, videoId);
+            countNo = dao.getUserWatchNo(userId, videoId, type);
         }catch (Exception e){
             log.error("---------------userId 为 " + userId + " 获取视频次数 " + e.getMessage());
         }

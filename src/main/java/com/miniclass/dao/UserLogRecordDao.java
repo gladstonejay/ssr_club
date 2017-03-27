@@ -18,5 +18,5 @@ public interface UserLogRecordDao {
 
     int updateByPrimaryKey(UserLogRecord record);
 
-    public Integer getUserWatchNo(@Param("userId")String userId, @Param("contentId")Integer videoId);
+    public Integer getUserWatchNo(@Param("userId")String userId, @Param("contentId")Integer videoId, @Param("type")Integer type);
 }

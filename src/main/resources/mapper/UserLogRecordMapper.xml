@@ -108,5 +108,6 @@
     select count(*) from user_log_record
     WHERE user_id = #{userId}
     AND content_id = #{contentId}
+    AND type = #{type}
   </select>
 </mapper>
