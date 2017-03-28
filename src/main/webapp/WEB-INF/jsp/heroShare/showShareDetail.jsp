@@ -9,31 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
+<html>
 <head>
 
     <jsp:include page="../common/head.jsp"></jsp:include>
-    <script>
-//        document.addEventListener('taphold', function(e) {
-//            e.preventDefault();
-//        });
-//        function onBodyLoad() {
-//            $("img").bind('taphold', function(event) {
-//                event.preventDefault();
-//            });
-//        }
-//        $('img').bind('contextmenu', function(e) {
-//            e.preventDefault();
-//        })
-        $(window).on('success',function(event, options){
-            that.$page.removeClass('animations');
-            that.$page.eq(opts.pageNext).addClass('animations');
-
-            alert("before")
-        that.$page.eq(opts.pageNow).find('.down-arrow').click();
-    alert("after")
-    )};
-    </script>
     <script>
         /*
          * 注意：
@@ -65,9 +44,6 @@
         });
         wx.ready(function(){
             wx.hideOptionMenu();
-            wx.hideMenuItems({
-                menuList: ["menuItem:share:appMessage"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
-            });
         })
     </script>
 
