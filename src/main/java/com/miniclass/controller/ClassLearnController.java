@@ -59,7 +59,7 @@ public class ClassLearnController {
 
         if ( userId == null || userId.length() == 0){
             List<VideoInfo> videoInfoList = userService.getAllVideo("1");
-            List<VideoInfoVo> videoInfoVos = new ArrayList<>();       
+            List<VideoInfoVo> videoInfoVos = new ArrayList<>();
             VideoInfoVo videoInfoVo = null;
             for (VideoInfo videoInfo : videoInfoList) {
                 videoInfoVo = new VideoInfoVo(videoInfo);
@@ -104,20 +104,13 @@ public class ClassLearnController {
                     return fill;
                 }
                 List<VideoInfo> videoInfoList = null;
-                if (userBasic.getUserType().equals("2".toString()))
-                {
-                    try {
-                        videoInfoList = userService.getAllVideo("2");
-                    }catch (Exception e){
-                        log.error(e.getMessage());
-                    }
-                }else{
-                    try {
-                        videoInfoList = userService.getAllVideo("1");
-                    }catch (Exception e){
-                        log.error(e.getMessage());
-                    }
+
+                try {
+                    videoInfoList = userService.getAllVideo("1");
+                }catch (Exception e){
+                    log.error(e.getMessage());
                 }
+
                 //List<VideoInfo> videoInfoList = userService.getAllVideo();
                 List<VideoInfoVo> videoInfoVos = new ArrayList<>();
                 VideoInfoVo videoInfoVo = null;
