@@ -7,7 +7,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
@@ -47,10 +47,39 @@
     wx.ready(function(){
       wx.hideOptionMenu();
     })
-  </script>
 
+    var ap_name = navigator.appName;
+    var ap_vinfo = navigator.appVersion;
+    var ap_ver = parseFloat(ap_vinfo.substring(0,ap_vinfo.indexOf('(')));
+    var time_start = new Date();
+    var clock_start = time_start.getTime();
+    var dl_ok=false;
+    function init ()
+    {
+      if(ap_name=="Netscape" && ap_ver>=3.0)
+        dl_ok=true;
+      return true;
+    }
+    function get_time_spent ()
+    {
+      var time_now = new Date();
+      return((time_now.getTime() - clock_start)/1000);
+    }
+    function show_secs () // show the time user spent on the side
+    {
+      var i_total_secs = Math.round(get_time_spent());
+      var i_secs_spent = i_total_secs % 60;
+      var i_mins_spent = Math.round((i_total_secs-30)/60);
+      var s_secs_spent = "" + ((i_secs_spent>9) ? i_secs_spent : "0" + i_secs_spent);
+      var s_mins_spent ="" + ((i_mins_spent>9) ? i_mins_spent : "0" + i_mins_spent);
+      //alert(s_mins_spent);
+      //alert(s_secs_spent);
+      //document.fm0.time_spent.value = s_mins_spent + ":" + s_secs_spent;
+      window.setTimeout('show_secs()',1000);
+    }
+  </script>
 </head>
-<body>
+<body onLoad="init(); window.setTimeout('show_secs()',1);">
 <div class="page-group">
   <div class="page page-current">
 
