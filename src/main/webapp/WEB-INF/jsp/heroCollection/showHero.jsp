@@ -182,13 +182,13 @@
                                 <div class="list-block media-list">
                                     <ul>
                                         <li >
-                                            <a href="/heroCollection/showHeroList.j?type=6" external class="item-link item-content">
+                                            <a href="/heroCollection/showHeroList.j?type=7" external class="item-link item-content">
                                                 <div class="item-media">
-                                                    <img src="../../../static/imags/heroCollection/store.png" width="44" >
+                                                    <img src="../../../static/imags/heroCollection/location.png" width="44" >
                                                 </div>
                                                 <div class="item-inner">
                                                     <div class="item-title-row">
-                                                        <div class="item-title">门店销售排行榜</div>
+                                                        <div class="item-title">经销商销售排行榜</div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -202,13 +202,13 @@
                                 <div class="list-block media-list">
                                     <ul>
                                         <li >
-                                            <a href="/heroCollection/showHeroList.j?type=7" external class="item-link item-content">
+                                            <a href="/heroCollection/showHeroList.j?type=6" external class="item-link item-content">
                                                 <div class="item-media">
-                                                    <img src="../../../static/imags/heroCollection/location.png" width="44" >
+                                                    <img src="../../../static/imags/heroCollection/store.png" width="44" >
                                                 </div>
                                                 <div class="item-inner">
                                                     <div class="item-title-row">
-                                                        <div class="item-title">经销商销售排行榜</div>
+                                                        <div class="item-title">门店销售排行榜</div>
                                                     </div>
                                                 </div>
                                             </a>
