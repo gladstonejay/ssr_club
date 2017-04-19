@@ -1,152 +1,152 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.miniclass.dao.UserScoreRecordDao" >
-  <resultMap id="BaseResultMap" type="com.miniclass.entity.UserScoreRecord" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="get_time" property="getTime" jdbcType="VARCHAR" />
-    <result column="year" property="year" jdbcType="INTEGER" />
-    <result column="season" property="season" jdbcType="INTEGER" />
-    <result column="month" property="month" jdbcType="INTEGER" />
-    <result column="score" property="score" jdbcType="INTEGER" />
-    <result column="type" property="type" jdbcType="VARCHAR" />
-    <result column="exam_score" property="examScore" jdbcType="INTEGER" />
-    <result column="exam_type" property="examType" jdbcType="INTEGER" />
-    <result column="exam_id" property="examId" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.miniclass.dao.UserScoreRecordDao">
+  <resultMap id="BaseResultMap" type="com.miniclass.entity.UserScoreRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="get_time" jdbcType="VARCHAR" property="getTime" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="season" jdbcType="INTEGER" property="season" />
+    <result column="month" jdbcType="INTEGER" property="month" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="exam_score" jdbcType="INTEGER" property="examScore" />
+    <result column="exam_type" jdbcType="INTEGER" property="examType" />
+    <result column="exam_id" jdbcType="INTEGER" property="examId" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, user_id, get_time, year, season, month, score, type, exam_score, exam_type, exam_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
     <include refid="Base_Column_List" />
     from user_score_record
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user_score_record
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.miniclass.entity.UserScoreRecord" >
-    insert into user_score_record (id, user_id, get_time, 
-      year, season, month, 
-      score, type, exam_score, 
+  <insert id="insert" parameterType="com.miniclass.entity.UserScoreRecord">
+    insert into user_score_record (id, user_id, get_time,
+      year, season, month,
+      score, type, exam_score,
       exam_type, exam_id)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{getTime,jdbcType=VARCHAR}, 
-      #{year,jdbcType=INTEGER}, #{season,jdbcType=INTEGER}, #{month,jdbcType=INTEGER}, 
-      #{score,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{examScore,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{getTime,jdbcType=VARCHAR},
+      #{year,jdbcType=INTEGER}, #{season,jdbcType=INTEGER}, #{month,jdbcType=INTEGER},
+      #{score,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{examScore,jdbcType=INTEGER},
       #{examType,jdbcType=INTEGER}, #{examId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.miniclass.entity.UserScoreRecord" >
+  <insert id="insertSelective" parameterType="com.miniclass.entity.UserScoreRecord">
     insert into user_score_record
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         user_id,
       </if>
-      <if test="getTime != null" >
+      <if test="getTime != null">
         get_time,
       </if>
-      <if test="year != null" >
+      <if test="year != null">
         year,
       </if>
-      <if test="season != null" >
+      <if test="season != null">
         season,
       </if>
-      <if test="month != null" >
+      <if test="month != null">
         month,
       </if>
-      <if test="score != null" >
+      <if test="score != null">
         score,
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         type,
       </if>
-      <if test="examScore != null" >
+      <if test="examScore != null">
         exam_score,
       </if>
-      <if test="examType != null" >
+      <if test="examType != null">
         exam_type,
       </if>
-      <if test="examId != null" >
+      <if test="examId != null">
         exam_id,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="getTime != null" >
+      <if test="getTime != null">
         #{getTime,jdbcType=VARCHAR},
       </if>
-      <if test="year != null" >
+      <if test="year != null">
         #{year,jdbcType=INTEGER},
       </if>
-      <if test="season != null" >
+      <if test="season != null">
         #{season,jdbcType=INTEGER},
       </if>
-      <if test="month != null" >
+      <if test="month != null">
         #{month,jdbcType=INTEGER},
       </if>
-      <if test="score != null" >
+      <if test="score != null">
         #{score,jdbcType=INTEGER},
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         #{type,jdbcType=VARCHAR},
       </if>
-      <if test="examScore != null" >
+      <if test="examScore != null">
         #{examScore,jdbcType=INTEGER},
       </if>
-      <if test="examType != null" >
+      <if test="examType != null">
         #{examType,jdbcType=INTEGER},
       </if>
-      <if test="examId != null" >
+      <if test="examId != null">
         #{examId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.miniclass.entity.UserScoreRecord" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.miniclass.entity.UserScoreRecord">
     update user_score_record
-    <set >
-      <if test="userId != null" >
+    <set>
+      <if test="userId != null">
         user_id = #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="getTime != null" >
+      <if test="getTime != null">
         get_time = #{getTime,jdbcType=VARCHAR},
       </if>
-      <if test="year != null" >
+      <if test="year != null">
         year = #{year,jdbcType=INTEGER},
       </if>
-      <if test="season != null" >
+      <if test="season != null">
         season = #{season,jdbcType=INTEGER},
       </if>
-      <if test="month != null" >
+      <if test="month != null">
         month = #{month,jdbcType=INTEGER},
       </if>
-      <if test="score != null" >
+      <if test="score != null">
         score = #{score,jdbcType=INTEGER},
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         type = #{type,jdbcType=VARCHAR},
       </if>
-      <if test="examScore != null" >
+      <if test="examScore != null">
         exam_score = #{examScore,jdbcType=INTEGER},
       </if>
-      <if test="examType != null" >
+      <if test="examType != null">
         exam_type = #{examType,jdbcType=INTEGER},
       </if>
-      <if test="examId != null" >
+      <if test="examId != null">
         exam_id = #{examId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.miniclass.entity.UserScoreRecord" >
+  <update id="updateByPrimaryKey" parameterType="com.miniclass.entity.UserScoreRecord">
     update user_score_record
     set user_id = #{userId,jdbcType=VARCHAR},
       get_time = #{getTime,jdbcType=VARCHAR},
