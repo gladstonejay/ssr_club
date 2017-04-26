@@ -56,8 +56,8 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table tableName="rules_table"
-               domainObjectName="RulesTable"
+        <table tableName="rule_engine_user"
+               domainObjectName="RuleEngineUser"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
