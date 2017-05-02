@@ -81,17 +81,6 @@
                         <div class="item-content">
                             <div class="item-media"><i class="icon icon-form-email"></i></div>
                             <div class="item-inner">
-                                <div class="item-title label">昵称</div>
-                                <div class="item-input">
-                                    <input type="text" placeholder="请输入您想使用的昵称" id="userNname" name="userNname" value="${ubVo.userNname}"  data-validate="userNname" data-describedby="userNname-description">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-email"></i></div>
-                            <div class="item-inner">
                                 <div class="item-title label">姓名</div>
                                 <div class="item-input">
                                     <input type="text" placeholder="请输入您的真实姓名" id="realName" name="realName" value="${ubVo.realName}"  data-validate="realName" data-describedby="realName-description">
@@ -132,17 +121,6 @@
                                 <div class="item-title label">密码</div>
                                 <div class="item-input">
                                     <input type="password" placeholder="请输入6-24位密码：字母或数字组合" id="password" name="password" value="${ubVo.password}" data-validate="password" data-describedby="password-description">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-password"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">密码确认</div>
-                                <div class="item-input">
-                                    <input type="password" placeholder="请再次输入密码" id="passwordSure" name="passwordSure" value="${ubVo.passwordSure}" data-required="true" data-descriptions="passwordSure" data-conditional="passwordSure">
                                 </div>
                             </div>
                         </div>
@@ -196,17 +174,6 @@
                     valid : '<div class="field-validmsg">正确</div>'
                     }
                 },
-            userNname:{
-                required : true,
-                pattern :  /^\S{1,24}(?!_)(?!.*?_$)[\u4e00-\u9fa5a-zA-Z0-9_]+$/,
-                each:function(){
-                },
-                descriptions:{
-                    required : '<div class="field-invalidmsg">请输入昵称</div>',
-                    pattern : '<div class="field-invalidmsg">昵称请输入2-24位字符：支持中文、英文、数字、“_”</div>',
-                    valid : '<div class="field-validmsg">正确</div>'
-                }
-            },
             realName:{
                 required : true,
                 pattern :  /^\S{1,24}(?!_)(?!.*?_$)[\u4e00-\u9fa5a-zA-Z0-9_]+$/,
@@ -280,9 +247,6 @@
             eachValidField:function(val){},
             eachInvalidField:function(event, status, options){},
             conditional: {
-                passwordSure: function (val) {
-                    return val == $("#password").val();
-                },
                 code:function(val){
                     if(!val && !val.length) return false;
                     var flag
@@ -306,9 +270,6 @@
                 userId:{
                     required : '请输入手机号'
                 },
-                userNname:{
-                    required : '请输入昵称'
-                },
                 realName:{
                     required : '请输入姓名'
                 },
@@ -320,10 +281,6 @@
                 },
                 password:{
                     required : '请输入密码'
-                },
-                passwordSure:{
-                    required : '请再次输入密码',
-                    conditional : '两次密码不一样'
                 },
                 code:{
                     required:  '请输入验证码',

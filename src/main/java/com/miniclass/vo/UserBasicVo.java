@@ -11,8 +11,6 @@ public class UserBasicVo extends Vo {
 
     private String userId;
 
-    private String userNname;
-
     private String userType;
 
     private String password;
@@ -57,14 +55,6 @@ public class UserBasicVo extends Vo {
 
     public void setUserId(String userId) {
         this.userId = userId == null ? null : userId.trim();
-    }
-
-    public String getUserNname() {
-        return userNname;
-    }
-
-    public void setUserNname(String userNname) {
-        this.userNname = userNname == null ? null : userNname.trim();
     }
 
     public String getUserType() {

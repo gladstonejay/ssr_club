@@ -350,16 +350,16 @@ public class MyController extends KaptchaExtend {
         String local= request.getParameter("location");
         String userType = request.getParameter("userType");
         String[] location = local.split(" ");
-        log.info("用户注册的昵称是 " + ubVo.getUserNname());
+        log.info("用户注册的姓名是 " + ubVo.getRealName());
 
 
         Integer a = userBasicService.userIdExist(ubVo.getUserId());
         if (a == 1){
             errorModel.addObject("errorId","电话号码已存在");
         }
-        Integer b = userBasicService.userNnameExist(ubVo.getUserNname());
+        Integer b = userBasicService.userNnameExist(ubVo.getRealName());
         if (b == 1 ){
-            errorModel.addObject("errorNname","昵称已存在");
+            errorModel.addObject("errorNname","该名字已注册");
         }
         if ( (a == 1) || (b==1) ){
             errorModel.addObject("userType",userType);
@@ -375,8 +375,8 @@ public class MyController extends KaptchaExtend {
             }
             UserBasic userBasic = new UserBasic();
             userBasic.setUserId(ubVo.getUserId());
-            userBasic.setUserNname((ubVo.getUserNname()));
             userBasic.setRealName(ubVo.getRealName());
+            userBasic.setUserNname((ubVo.getRealName()));
             userBasic.setPassword(newstr);
             userBasic.setUserType(userType);
             userBasic.setStatus(0);
@@ -408,7 +408,12 @@ public class MyController extends KaptchaExtend {
         }
     }
 
-
+    /**
+     * 补充信息
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/fillInfo")
     public ModelAndView fillInfo(  HttpServletRequest request, HttpServletResponse response){
 
