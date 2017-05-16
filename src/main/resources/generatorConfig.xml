@@ -56,8 +56,8 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table tableName="rule_engine_user"
-               domainObjectName="RuleEngineUser"
+        <table tableName="mq_record"
+               domainObjectName="MqRecord"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
