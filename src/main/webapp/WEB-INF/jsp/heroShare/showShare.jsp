@@ -156,7 +156,7 @@
                                         <a href="/heroShare/showShareDetail.j?id=${item.item}&type=${item.type}" external class="item-link item-content">
                                             <div class="item-inner">
                                                 <div class="item-title-row">
-                                                    <div class="item-title"> Q${item.item}季度完美门店 (demo)</div>
+                                                    <div class="item-title"> ${item.title}</div>
                                                 </div>
                                             </div>
                                         </a>

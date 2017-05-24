@@ -113,26 +113,26 @@
                 <div id="tab2" class="tab active">
                 <c:choose>
                     <c:when test="${userBasic.userType == '1' ||  userBasic.userType == '2'}">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="list-block media-list">
-                                    <ul>
-                                        <li >
-                                            <a href="/heroCollection/showHeroList.j?type=6" external class="item-link item-content">
-                                                <div class="item-media">
-                                                    <img src="../../../static/imags/heroCollection/store.png" width="44" >
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <div class="item-title">门店销售排行榜</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <%--<div class="card">--%>
+                            <%--<div class="card-content">--%>
+                                <%--<div class="list-block media-list">--%>
+                                    <%--<ul>--%>
+                                        <%--<li >--%>
+                                            <%--<a href="/heroCollection/showHeroList.j?type=6" external class="item-link item-content">--%>
+                                                <%--<div class="item-media">--%>
+                                                    <%--<img src="../../../static/imags/heroCollection/store.png" width="44" >--%>
+                                                <%--</div>--%>
+                                                <%--<div class="item-inner">--%>
+                                                    <%--<div class="item-title-row">--%>
+                                                        <%--<div class="item-title">门店销售排行榜</div>--%>
+                                                    <%--</div>--%>
+                                                <%--</div>--%>
+                                            <%--</a>--%>
+                                        <%--</li>--%>
+                                    <%--</ul>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                     </c:when>
                     <c:when test="${userBasic.userType == '4'}">
                         <div class="card">
@@ -197,26 +197,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="list-block media-list">
-                                    <ul>
-                                        <li >
-                                            <a href="/heroCollection/showHeroList.j?type=6" external class="item-link item-content">
-                                                <div class="item-media">
-                                                    <img src="../../../static/imags/heroCollection/store.png" width="44" >
-                                                </div>
-                                                <div class="item-inner">
-                                                    <div class="item-title-row">
-                                                        <div class="item-title">门店销售排行榜</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <%--<div class="card">--%>
+                            <%--<div class="card-content">--%>
+                                <%--<div class="list-block media-list">--%>
+                                    <%--<ul>--%>
+                                        <%--<li >--%>
+                                            <%--<a href="/heroCollection/showHeroList.j?type=6" external class="item-link item-content">--%>
+                                                <%--<div class="item-media">--%>
+                                                    <%--<img src="../../../static/imags/heroCollection/store.png" width="44" >--%>
+                                                <%--</div>--%>
+                                                <%--<div class="item-inner">--%>
+                                                    <%--<div class="item-title-row">--%>
+                                                        <%--<div class="item-title">门店销售排行榜</div>--%>
+                                                    <%--</div>--%>
+                                                <%--</div>--%>
+                                            <%--</a>--%>
+                                        <%--</li>--%>
+                                    <%--</ul>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                     </c:otherwise>
                 </c:choose>
                 </div>
