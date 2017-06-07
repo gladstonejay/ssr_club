@@ -155,7 +155,7 @@
                                                     </div>
                                                     <div class="item-inner">
                                                         <div class="item-title-row">
-                                                            <div class="item-title"><h4>第${item.orderId}次考试</h4></div>
+                                                            <div class="item-title"><h4>${item.title}</h4></div>
                                                         </div>
                                                         <div class="item-subtitle" >
                                                             <span>题型：单选</span>
@@ -188,7 +188,7 @@
                                                     </div>
                                                     <div class="item-inner">
                                                         <div class="item-title-row">
-                                                            <div class="item-title"><h4>第${item.orderId}次考试</h4></div>
+                                                            <div class="item-title"><h4>${item.title}</h4></div>
                                                         </div>
                                                         <div class="item-subtitle" >
                                                             <span>题型：单选</span>
