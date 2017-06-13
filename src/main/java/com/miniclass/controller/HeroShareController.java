@@ -2,7 +2,9 @@ package com.miniclass.controller;
 
 import com.miniclass.entity.Content;
 import com.miniclass.entity.UserBasic;
+import com.miniclass.entity.UserRecord;
 import com.miniclass.enums.ShareTypeEnum;
+import com.miniclass.service.ScoreService;
 import com.miniclass.service.UserBasicService;
 import com.miniclass.service.UserLogService;
 import com.miniclass.service.UserShareService;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -32,6 +35,8 @@ public class HeroShareController {
     private UserBasicService userBasicService;
     @Autowired
     private UserLogService userLogService;
+    @Autowired
+    private ScoreService scoreService;
 
     @RequestMapping(value="/showShare")
     public ModelAndView showRank(HttpServletRequest request) {
@@ -75,7 +80,11 @@ public class HeroShareController {
             content = userShareService.getContentByTypeAndItem(type, id);
             userBasic = userBasicService.getUserById(userId);
             userLogService.logUser(userId, userBasic.getUserType(), type, id);
-
+            if ( type == ShareTypeEnum.USER_TYPE_1.getValue() ){
+                if (userBasic.getUserType().equals("1") || userBasic.getUserType().equals("2") ) {
+                    scoreService.addTScoreByIndustry(userId);
+                }
+            }
         } catch (Exception e){
             log.error("【精英分享获取详细失败】: 类型是 ："  + type + " id是 " + id);
         }

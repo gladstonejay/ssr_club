@@ -7,10 +7,8 @@ import javax.servlet.http.HttpSession;
 import com.miniclass.entity.*;
 import com.miniclass.service.*;
 import com.miniclass.util.CommonFuncUtil;
-import com.miniclass.util.Constant;
 import com.miniclass.util.DateUtil;
 import com.miniclass.vo.VideoInfoVo;
-import com.sun.org.apache.xerces.internal.dom.PSVIDOMImplementationImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,8 +36,6 @@ public class ClassLearnController {
     private UserBasicService userService;
     @Autowired
     private ReviewService reviewService;
-    @Autowired
-    private UserShareService userShareService;
     @Autowired
     private ScoreService scoreService;
     @Autowired
@@ -231,21 +226,7 @@ public class ClassLearnController {
 
         userLogService.logUser(userId, userType, 8, videoId);
         if (userType.equals("1") || userType.equals("2") ) {
-
-            UserRecord userRecord = new UserRecord();
-            userRecord.setUserId(userId);
-            userRecord.setMid(videoId);
-            //type： video, weixin, ppt,exam
-            userRecord.setType("video");
-            userRecord.setScore(0);
-            Calendar cal = Calendar.getInstance();
-            Integer month = cal.get(Calendar.MONTH) + 1;
-            userRecord.setMonth(month);
-            Integer count = this.userService.isRecorded(userRecord);
-            if (count == 0) {
-                this.userService.insertUserRecord(userRecord);
-                scoreService.addTScoreByClass(userId);
-            }
+            scoreService.addTScoreByClass(userId);
         }
         model.addObject("videoInfo",videoInfo);
 
@@ -289,20 +270,7 @@ public class ClassLearnController {
         userLogService.logUser(userId, userType, 9, id);
         if (userType.equals("1") || userType.equals("2") ) {
 
-            UserRecord userRecord = new UserRecord();
-            userRecord.setUserId(userId);
-            userRecord.setMid(id);
-            //type： video, weixin, ppt,exam
-            userRecord.setType("weixin");
-            userRecord.setScore(0);
-            Calendar cal = Calendar.getInstance();
-            Integer month = cal.get(Calendar.MONTH) + 1;
-            userRecord.setMonth(month);
-            Integer count = this.userService.isRecorded(userRecord);
-            if (count == 0) {
-                this.userService.insertUserRecord(userRecord);
-                scoreService.addTScoreByLearn(userId);
-            }
+            scoreService.addTScoreByLearn(userId);
         }
         return modelAndView;
     }
@@ -406,25 +374,10 @@ public class ClassLearnController {
         }
         userLogService.logUser(userId, userType, examType, id);
         if (userType.equals("1") || userType.equals("2") ) {
-
-            UserRecord userRecord = new UserRecord();
-            userRecord.setUserId(userId);
-            userRecord.setMid(id);
-            //type： video, weixin, ppt,exam
-            userRecord.setType("exam");
-            userRecord.setScore(score);
-            Calendar cal = Calendar.getInstance();
-            Integer month = cal.get(Calendar.MONTH) + 1;
-            userRecord.setMonth(month);
-            //取消对考试的限制 20170320
             scoreService.addTScoreByExam(userId,score,type,id);
-            /*
-            Integer count = this.userService.isRecorded(userRecord);
-            if (count == 0) {
-                this.userService.insertUserRecord(userRecord);
-                scoreService.addTScoreByExam(userId,score,type,id);
-            }
-            */
+            //取消对考试的限制 20170320 此方法只为计算平均数
+            scoreService.addTScoreAvgByExam(userId,score,type,id);
+
         }
         return modelAndView;
     }
