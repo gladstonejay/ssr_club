@@ -167,4 +167,19 @@
     and get_time =#{getTime}
     and type = #{type}
   </select>
+
+  <select id="getUserScoreCountMonthByType" resultType="java.lang.Integer">
+    SELECT COUNT(*) from user_score_record
+    WHERE user_id = #{userId}
+    and type = #{type}
+    and month = #{month}
+  </select>
+
+  <select id="getUserLatestRecordByType" resultMap="BaseResultMap">
+    select * from user_score_record
+    WHERE user_id = #{userId}
+    and type = #{type}
+    and month = #{month}
+    ORDER BY get_time DESC limit 1
+  </select>
 </mapper>

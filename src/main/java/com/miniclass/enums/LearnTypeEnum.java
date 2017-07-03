@@ -7,7 +7,8 @@ public enum LearnTypeEnum {
 
     LEARN_TYPE_ENUM_0(0, "video"),
     LEARN_TYPE_ENUM_1(1, "weixin"),
-    LEARN_TYPE_ENUM_2(2, "exam");
+    LEARN_TYPE_ENUM_2(2, "exam"),
+    LEARN_TYPE_ENUM_3(3, "industry");
 
 
     private int value;

@@ -19,7 +19,7 @@ public interface ScoreService {
     public void addTScoreByClass (String userId);
 
     /**
-     * 文字内容学习 2分
+     * 文字内容学习 3分
      */
     public void addTScoreByLearn (String userId);
 
@@ -27,6 +27,16 @@ public interface ScoreService {
      * 考试分数 实际 满分10分
      */
     public void addTScoreByExam (String userId, Integer score, Integer type , Integer examId);
+
+    /**
+     * 考试记录，只为保存平均数
+     */
+    public void addTScoreAvgByExam(String userId, Integer score, Integer type , Integer examId);
+
+    /**
+     * 行业动态2分
+     */
+    public void addTScoreByIndustry (String userId);
 
 
     /**

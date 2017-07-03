@@ -19,4 +19,15 @@ public interface UserScoreRecordDao {
     int updateByPrimaryKey(UserScoreRecord record);
 
     public int getUserHaveTodayScoreByType(@Param("userId")String userId , @Param("getTime")String dateString , @Param("type")String type);
+
+    /**
+     * 获取每个月已经获取积分
+     */
+    public int getUserScoreCountMonthByType(@Param("userId")String userId, @Param("type")String type, @Param("month")Integer month);
+
+    /**
+     * 获得当月最近一次积分获取情况
+     */
+    public UserScoreRecord getUserLatestRecordByType(@Param("userId")String userId, @Param("type")String type ,@Param("month")Integer month);
+
 }

@@ -134,7 +134,21 @@
     select * from user_score_rank order by total_score desc limit 10;
   </select>
 
+  <select id="getAllUser"  resultMap="BaseResultMap">
+    select * from user_score_rank order by total_score desc;
+  </select>
+
   <select id="getTop100User"  resultType="java.lang.String">
     select user_id from user_score_rank order by total_score desc limit 100;
   </select>
+
+  <update id="clearTotalScoreByMonth">
+    UPDATE user_score_rank
+    set total_score = 0
+  </update>
+
+  <update id="addTotalScoreToScoreByMonth">
+    update user_score_rank
+    set score=score+total_score;
+  </update>
 </mapper>

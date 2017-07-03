@@ -2,7 +2,9 @@ package com.miniclass.dao;
 
 import com.miniclass.entity.UserBasic;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserBasicDao {
 
     int deleteByPrimaryKey(Integer id);

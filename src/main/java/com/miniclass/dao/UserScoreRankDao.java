@@ -29,5 +29,11 @@ public interface UserScoreRankDao {
 
     public List<UserScoreRank> getTopUser();
 
+    public List<UserScoreRank> getAllUser();
+
     public List<String> getTop100User();
+
+    public Boolean clearTotalScoreByMonth();
+
+    public boolean addTotalScoreToScoreByMonth();
 }
