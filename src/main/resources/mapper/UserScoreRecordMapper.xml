@@ -172,6 +172,9 @@
     SELECT COUNT(*) from user_score_record
     WHERE user_id = #{userId}
     and type = #{type}
+    <if test="type == 'exam'">
+      and score=10
+    </if>
     and month = #{month}
   </select>
 

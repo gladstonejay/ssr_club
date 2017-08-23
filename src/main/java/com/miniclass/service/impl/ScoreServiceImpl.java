@@ -189,7 +189,7 @@ public class ScoreServiceImpl implements ScoreService {
             }else{
                 season = (userScoreRecord.getMonth() - dot) / 3 + 1;
             }            userScoreRecord.setSeason(season);
-            userScoreRecord.setScore(10);
+            userScoreRecord.setScore(0);
             userScoreRecord.setType(LearnTypeEnum.getName(2));
             userScoreRecord.setUserId(userId);
             userScoreRecord.setExamScore(score);
