@@ -157,7 +157,6 @@ public class ScoreServiceImpl implements ScoreService {
             UserScoreRank userScoreRank = new UserScoreRank();
             if (recordCount == 0) {
                 userScoreRank.setUserId(userId);
-                //userScoreRank.setYear(DateUtil.getYear(dateString, DateUtil.DATE_FORMAT_DAY_SHORT));
                 userScoreRank.setTotalScore(10);
                 userScoreRankDao.insertSelective(userScoreRank);
             } else {
