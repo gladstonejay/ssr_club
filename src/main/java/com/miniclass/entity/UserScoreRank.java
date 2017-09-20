@@ -1,5 +1,7 @@
 package com.miniclass.entity;
 
+import java.util.Date;
+
 public class UserScoreRank {
     private Integer id;
 
@@ -14,6 +16,8 @@ public class UserScoreRank {
     private Integer score;
 
     private Integer totalScore;
+
+    private Date updateTime;
 
     public Integer getId() {
         return id;
@@ -69,5 +73,13 @@ public class UserScoreRank {
 
     public void setTotalScore(Integer totalScore) {
         this.totalScore = totalScore;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

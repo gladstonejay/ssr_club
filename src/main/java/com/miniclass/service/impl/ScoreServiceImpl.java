@@ -63,6 +63,7 @@ public class ScoreServiceImpl implements ScoreService {
                 userScoreRank.setUserId(userId);
                 //userScoreRank.setYear(DateUtil.getYear(dateString, DateUtil.DATE_FORMAT_DAY_SHORT));
                 userScoreRank.setTotalScore(10);
+                userScoreRank.setUpdateTime(new Date());
                 userScoreRankDao.insertSelective(userScoreRank);
             } else {
                 userScoreRank = userScoreRankDao.getUserRecordByUserId(userId);
@@ -110,6 +111,7 @@ public class ScoreServiceImpl implements ScoreService {
                 userScoreRank.setUserId(userId);
                 //userScoreRank.setYear(DateUtil.getYear(dateString, DateUtil.DATE_FORMAT_DAY_SHORT));
                 userScoreRank.setTotalScore(3);
+                userScoreRank.setUpdateTime(new Date());
                 userScoreRankDao.insertSelective(userScoreRank);
             } else {
                 userScoreRank = userScoreRankDao.getUserRecordByUserId(userId);
@@ -158,6 +160,7 @@ public class ScoreServiceImpl implements ScoreService {
             if (recordCount == 0) {
                 userScoreRank.setUserId(userId);
                 userScoreRank.setTotalScore(10);
+                userScoreRank.setUpdateTime(new Date());
                 userScoreRankDao.insertSelective(userScoreRank);
             } else {
                 userScoreRank = userScoreRankDao.getUserRecordByUserId(userId);
@@ -238,6 +241,7 @@ public class ScoreServiceImpl implements ScoreService {
                 userScoreRank.setUserId(userId);
                 //userScoreRank.setYear(DateUtil.getYear(dateString, DateUtil.DATE_FORMAT_DAY_SHORT));
                 userScoreRank.setTotalScore(2);
+                userScoreRank.setUpdateTime(new Date());
                 userScoreRankDao.insertSelective(userScoreRank);
             } else {
                 userScoreRank = userScoreRankDao.getUserRecordByUserId(userId);
