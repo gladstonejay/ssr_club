@@ -20,33 +20,11 @@
         <logback.version>1.1.3</logback.version>
         <junit.version>4.11</junit.version>
         <logback-ext-spring.version>0.1.1</logback-ext-spring.version>
-        <plat.framework.version>2.0-SNAPSHOT</plat.framework.version>
 
     </properties>
 
 
     <dependencies>
-        <dependency>
-            <groupId>com.plat.framework</groupId>
-            <artifactId>plat-framework</artifactId>
-            <version>${plat.framework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.plat.framework</groupId>
-            <artifactId>plat-framework-bean</artifactId>
-            <version>${plat.framework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.plat.framework</groupId>
-            <artifactId>plat-framework-core</artifactId>
-            <version>${plat.framework.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpclient</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
