@@ -7,7 +7,8 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -44,7 +45,7 @@
                 'hideOptionMenu'
             ]
         });
-        wx.ready(function(){
+        wx.ready(function () {
             wx.hideOptionMenu();
         })
     </script>
@@ -76,9 +77,25 @@
                             <img class='card-cover' src="../../../static/imags/shortIntro/myClass.png" alt="">
                         </div>
                     </div>
-                            <div valign="bottom" class="card-header color-white no-border no-padding">
-                                <img class='card-cover' src="../../../static/imags/month/class-${month}.png" alt="">
+
+                    <%--搜索--%>
+                        <form class="zform zform-radius" action="/classLearn/search.j" method="post" id="form1">
+                    <div class="content-padded">
+                        <div class="searchbar">
+                            <div class="search-input">
+                                <label class="icon icon-search" for="search"></label>
+                                <input type="text" id='search' name='search' placeholder='请输入关键字......'/>
                             </div>
+                        </div>
+                    </div>
+                        </form>
+
+                    <%--题图--%>
+                    <div valign="bottom" class="card-header color-white no-border no-padding">
+                        <c:if test="${month != null}">
+                        <img class='card-cover' src="../../../static/imags/month/class-${month}.png" alt="">
+                        </c:if>
+                    </div>
                     <c:forEach items="${videoInfoList}" var="item" varStatus="xh">
                         <div class="card">
                             <div class="card-content">
@@ -87,7 +104,8 @@
                                         <li>
                                             <c:choose>
                                             <c:when test="${item.videoId !=null }">
-                                            <a href="/classLearn/showOneClass.j?id=${item.orderId}" external class="item-link item-content">
+                                            <a href="/classLearn/showOneClass.j?id=${item.orderId}" external
+                                               class="item-link item-content">
                                                 </c:when>
                                                 <c:otherwise>
                                                 <a href="#" external class="item-link item-content">
@@ -96,26 +114,32 @@
                                                     <div class="item-media"><i class="icon icon-f7"></i></div>
                                                     <div class="item-media">
                                                             <%--<img src="../../../static/imags/video${item.orderId}.png" width="44">--%>
-                                                        <img src="../../../static/imags/video/video${item.orderId}.png" width="64">
+                                                        <img src="../../../static/imags/video/video${item.orderId}.png"
+                                                             width="64">
                                                     </div>
-                                                        <div class="item-inner">
-                                                            <div class="item-title-row">
-                                                                <div >${item.title}</div>
-                                                            </div>
-                                                            <div class="item-subtitle"><img src="../../../static/imags/classLearn/writer.png" width="12"> ：${item.writer}</div>
-                                                            <div class="item-subtitle">
-                                                                <img src="../../../static/imags/heroShare/time.png" width="16"> <span>${item.timestamp}</span>
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <c:choose>
+                                                    <div class="item-inner">
+                                                        <div class="item-title-row">
+                                                            <div>${item.title}</div>
+                                                        </div>
+                                                        <div class="item-subtitle"><img
+                                                                src="../../../static/imags/classLearn/writer.png"
+                                                                width="12"> ：${item.writer}</div>
+                                                        <div class="item-subtitle">
+                                                            <img src="../../../static/imags/heroShare/time.png"
+                                                                 width="16"> <span>${item.timestamp}</span>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <c:choose>
                                                                 <c:when test="${item.watched=='1'}">
-                                                                    <img src="../../../static/imags/classLearn/class_done.png" width="48">
+                                                                    <img src="../../../static/imags/classLearn/class_done.png"
+                                                                         width="48">
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                                    <img src="../../../static/imags/classLearn/class_undo.png" width="48">
+                                                                    <img src="../../../static/imags/classLearn/class_undo.png"
+                                                                         width="48">
                                                                 </c:otherwise>
-                                                                </c:choose>
-                                                            </div>
+                                                            </c:choose>
                                                         </div>
+                                                    </div>
                                                 </a>
                                         </li>
                                     </ul>
@@ -126,7 +150,8 @@
                     <div class="content-block">
                         <div class="row">
                             <div class="col-100">
-                                <a href="/classLearn/showHistory.j" external class="button button-big button-fill button-success">查看历史课程</a>
+                                <a href="/classLearn/showHistory.j" external
+                                   class="button button-big button-fill button-success">查看历史课程</a>
                             </div>
                         </div>
                     </div>
@@ -139,72 +164,78 @@
                             <img class='card-cover' src="../../../static/imags/shortIntro/exam.png" alt="">
                         </div>
                     </div>
-                        <%--课前测试的一坨--%>
-                        <div valign="bottom" class="card-header color-white no-border no-padding">
-                            <img class='card-cover' src="../../../static/imags/classLearn/lesson_before.png" alt="">
-                        </div>
-                        <c:forEach items="${examListBefore}" var="item" varStatus="xh">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="list-block media-list">
-                                        <ul>
-                                            <li >
-                                                <a href="/classLearn/showOneExam.j?id=${item.orderId}&type=1" external class="item-link item-content">
-                                                    <div class="item-media">
-                                                        <img src="../../../static/imags/content/before_test_${item.orderId}.png" width="64" >
+                    <%--课前测试的一坨--%>
+                    <div valign="bottom" class="card-header color-white no-border no-padding">
+                        <img class='card-cover' src="../../../static/imags/classLearn/lesson_before.png" alt="">
+                    </div>
+                    <c:forEach items="${examListBefore}" var="item" varStatus="xh">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="list-block media-list">
+                                    <ul>
+                                        <li>
+                                            <a href="/classLearn/showOneExam.j?id=${item.orderId}&type=1" external
+                                               class="item-link item-content">
+                                                <div class="item-media">
+                                                    <img src="../../../static/imags/content/before_test_${item.orderId}.png"
+                                                         width="64">
+                                                </div>
+                                                <div class="item-inner">
+                                                    <div class="item-title-row">
+                                                        <div class="item-title"><h4>${item.title}</h4></div>
                                                     </div>
-                                                    <div class="item-inner">
-                                                        <div class="item-title-row">
-                                                            <div class="item-title"><h4>${item.title}</h4></div>
-                                                        </div>
-                                                        <div class="item-subtitle" >
-                                                            <span>题型：单选</span>
-                                                        </div>
-                                                        <div class="item-subtitle">
-                                                            <span>难度：</span>
-                                                                <img src="../../../static/imags/classLearn/star_${item.star}.png" width="64" >
-                                                        </div>
+                                                    <div class="item-subtitle">
+                                                        <span>题型：单选</span>
                                                     </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                                    <div class="item-subtitle">
+                                                        <span>难度：</span>
+                                                        <img src="../../../static/imags/classLearn/star_${item.star}.png"
+                                                             width="64">
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </c:forEach>
-                        <%--课程测试的一坨--%>
-                        <div valign="bottom" class="card-header color-white no-border no-padding">
-                            <img class='card-cover' src="../../../static/imags/classLearn/lesson_after.png" alt="">
                         </div>
-                        <c:forEach items="${examListAfter}" var="item" varStatus="xh">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="list-block media-list">
-                                        <ul>
-                                            <li >
-                                                <a href="/classLearn/showOneExam.j?id=${item.orderId}&type=2" external class="item-link item-content">
-                                                    <div class="item-media">
-                                                        <img src="../../../static/imags/content/after_test_${item.orderId}.png" width="64" >
+                    </c:forEach>
+                    <%--课程测试的一坨--%>
+                    <div valign="bottom" class="card-header color-white no-border no-padding">
+                        <img class='card-cover' src="../../../static/imags/classLearn/lesson_after.png" alt="">
+                    </div>
+                    <c:forEach items="${examListAfter}" var="item" varStatus="xh">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="list-block media-list">
+                                    <ul>
+                                        <li>
+                                            <a href="/classLearn/showOneExam.j?id=${item.orderId}&type=2" external
+                                               class="item-link item-content">
+                                                <div class="item-media">
+                                                    <img src="../../../static/imags/content/after_test_${item.orderId}.png"
+                                                         width="64">
+                                                </div>
+                                                <div class="item-inner">
+                                                    <div class="item-title-row">
+                                                        <div class="item-title"><h4>${item.title}</h4></div>
                                                     </div>
-                                                    <div class="item-inner">
-                                                        <div class="item-title-row">
-                                                            <div class="item-title"><h4>${item.title}</h4></div>
-                                                        </div>
-                                                        <div class="item-subtitle" >
-                                                            <span>题型：单选</span>
-                                                        </div>
-                                                        <div class="item-subtitle">
-                                                            <span>难度：</span>
-                                                            <img src="../../../static/imags/classLearn/star_${item.star}.png" width="64" >
-                                                        </div>
+                                                    <div class="item-subtitle">
+                                                        <span>题型：单选</span>
                                                     </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                                    <div class="item-subtitle">
+                                                        <span>难度：</span>
+                                                        <img src="../../../static/imags/classLearn/star_${item.star}.png"
+                                                             width="64">
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </c:forEach>
+                        </div>
+                    </c:forEach>
                 </div>
                 <div id="tab3" class="tab">
                     <%--简介图--%>
@@ -218,11 +249,12 @@
                             <div class="card-content">
                                 <div class="list-block media-list">
                                     <ul>
-                                        <li >
-                                            <a href="/classLearn/showOneTip.j?id=${item.itemId}&type=${item.type}" external class="item-link item-content">
+                                        <li>
+                                            <a href="/classLearn/showOneTip.j?id=${item.itemId}&type=${item.type}"
+                                               external class="item-link item-content">
                                                 <div class="item-inner">
                                                     <div class="item-title-row">
-                                                        <div ><h5>${item.title}</h5></div>
+                                                        <div><h5>${item.title}</h5></div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -230,9 +262,6 @@
                                     </ul>
                                 </div>
                             </div>
-                                <%--<div class="card-footer">--%>
-                                <%--<span>2016/04/12</span>--%>
-                                <%--</div>--%>
                         </div>
                     </c:forEach>
                 </div>

@@ -106,4 +106,14 @@ public class UserBasicServiceImpl implements UserBasicService{
 
         return userDao.updateUserType4Info(userId, realName, pro, city, county, location);
     }
+
+    /**
+     * 搜索栏获取匹配记录
+     * @param word
+     * @return
+     */
+    public List<VideoInfo> getSearchVideo(String word){
+
+        return videoInfoDao.getSearchVideo(word);
+    }
 }

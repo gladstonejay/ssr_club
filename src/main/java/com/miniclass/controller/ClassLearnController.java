@@ -41,7 +41,135 @@ public class ClassLearnController {
     @Autowired
     private UserLogService userLogService;
 
-    /**6
+
+    /**
+     * 搜索栏
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/search")
+    public ModelAndView searchClass(HttpServletRequest request){
+
+        String keyWord = request.getParameter("search");
+
+        ModelAndView model = new ModelAndView("/classLearn/showUserClass");
+        ModelAndView model2 = new ModelAndView("/heroCollection/showHero");
+
+        String userId = CommonFuncUtil.getUserIdByCookie(request);
+
+        if ( userId == null || userId.length() == 0){
+            /**
+             * 获取新的搜索结果
+             */
+            List<VideoInfo> videoInfoList = null;
+            if(keyWord != null && keyWord != ""){
+                videoInfoList = userService.getSearchVideo(keyWord);
+            }
+            List<VideoInfoVo> videoInfoVos = new ArrayList<>();
+            VideoInfoVo videoInfoVo = null;
+            for (VideoInfo videoInfo : videoInfoList) {
+                videoInfoVo = new VideoInfoVo(videoInfo);
+                videoInfoVo.setTimestamp(DateUtil.format(videoInfo.getTimestamp(),DateUtil.DATE_FORMAT_DAY));
+                videoInfoVo.setWriter(videoInfo.getWriter());
+                videoInfoVo.setStatus(videoInfo.getStatus());
+                model.addObject("month",videoInfo.getMonth());
+                videoInfoVos.add(videoInfoVo);
+            }
+            List<Exam> resultExamBefore = null;
+            List<Exam> resultExamAfter = null;
+            try{
+                resultExamBefore = reviewService.getAllExam(1);
+                resultExamAfter = reviewService.getAllExam(2);
+            }
+            catch (Exception e){
+                log.error(e.getMessage());
+            }
+            List<QuestionAnswer> resultWeixin = null;
+            try{
+                resultWeixin = reviewService.getAllArticle("weixin");
+            } catch (Exception e)
+            {
+                log.error(e.getMessage());
+            }
+
+            model.addObject("examListBefore", resultExamBefore);
+            model.addObject("examListAfter", resultExamAfter);
+            model.addObject("weixinList", resultWeixin);
+            model.addObject("videoInfoList", videoInfoVos);
+
+            return model;
+        }else{
+            UserBasic userBasic = null;
+            try {
+                userBasic = userService.getUserById(userId);
+                //补全信息入口 ，20170311
+                if (userBasic.getLocation() == null || userBasic.getLocation().length() == 0){
+                    ModelAndView fill = new ModelAndView("/my/fulfillBasicInfo");
+
+                    fill.addObject("userType" , userBasic.getUserType());
+                    return fill;
+                }
+                List<VideoInfo> videoInfoList = null;
+
+                try {
+                    /**
+                     * 获取新的搜索结果
+                     */
+                    if(keyWord != null && keyWord != ""){
+                        videoInfoList = userService.getSearchVideo(keyWord);
+                    }
+                }catch (Exception e){
+                    log.error(e.getMessage());
+                }
+
+                //List<VideoInfo> videoInfoList = userService.getAllVideo();
+                List<VideoInfoVo> videoInfoVos = new ArrayList<>();
+                VideoInfoVo videoInfoVo = null;
+                for (VideoInfo videoInfo : videoInfoList) {
+                    videoInfoVo = new VideoInfoVo(videoInfo);
+                    videoInfoVo.setTimestamp(DateUtil.format(videoInfo.getTimestamp(),DateUtil.DATE_FORMAT_DAY));
+                    videoInfoVo.setWriter(videoInfo.getWriter());
+                    videoInfoVo.setStatus(videoInfo.getStatus());
+                    Integer watchNo = userLogService.getUserWatchNo(userId, videoInfo.getOrderId(), 8);
+                    if (watchNo > 0){
+                        videoInfoVo.setWatched(1);
+                    }else{
+                        videoInfoVo.setWatched(0);
+                    }
+                    log.info("-----------------------watched = " + videoInfoVo.getWatched());
+                    model.addObject("month",videoInfo.getMonth());
+                    videoInfoVos.add(videoInfoVo);
+                }
+                List<Exam> resultExamBefore = null;
+                List<Exam> resultExamAfter = null;
+                try{
+                    resultExamBefore = reviewService.getAllExam(1);
+                    resultExamAfter = reviewService.getAllExam(2);
+                }
+                catch (Exception e){
+                    log.error(e.getMessage());
+                }
+                List<QuestionAnswer> resultWeixin = null;
+                try{
+                    resultWeixin = reviewService.getAllArticle("weixin");
+                } catch (Exception e)
+                {
+                    log.error(e.getMessage());
+                }
+
+                model.addObject("examListBefore", resultExamBefore);
+                model.addObject("examListAfter", resultExamAfter);
+                model.addObject("weixinList", resultWeixin);
+                model.addObject("videoInfoList", videoInfoVos);
+
+            }catch (Exception e){
+                log.error(e.getMessage());
+            }
+            return model;
+        }
+    }
+
+    /**
      * 本月课程列表
      */
     @RequestMapping(value="/showUserClass")
@@ -381,6 +509,8 @@ public class ClassLearnController {
         }
         return modelAndView;
     }
+
+
 
 
 }

@@ -95,4 +95,68 @@ public class HeroShareController {
         return model;
     }
 
+
+    /**
+     * 搜索
+     * @param request
+     * @return
+     */
+    @RequestMapping(value="/search")
+    public ModelAndView search(HttpServletRequest request) {
+
+
+        ModelAndView model = new ModelAndView("/heroShare/showShare");
+
+        String userId = CommonFuncUtil.getUserIdByCookie(request);
+        UserBasic userBasic = null;
+        List<Content> content1 = null;
+        List<Content> content2 = null;
+        List<Content> content3 = null;
+
+        try {
+            String word;
+            if (request.getParameter("search_industry") != null){
+                if (request.getParameter("search_industry") != null && request.getParameter("search_industry") != "") {
+                    word = request.getParameter("search_industry");
+                    content1 = userShareService.getContentByTypeAndWord(1, word);
+                    content2 = userShareService.getContentByType(2);
+
+                } else {
+                    content2 = userShareService.getContentByType(2);
+                }
+                content3 = userShareService.getContentByType(3);
+                userBasic = userBasicService.getUserById(userId);
+            }
+            else{
+                ModelAndView model2 = new ModelAndView("/heroShare/showShare2");
+
+                if (request.getParameter("search_brand") != null && request.getParameter("search_brand") != ""){
+                    word = request.getParameter("search_brand");
+                    content1 = userShareService.getContentByType(1);
+                    content2 = userShareService.getContentByTypeAndWord(2, word);
+                }else {
+                    content1 = userShareService.getContentByType(1);
+                }
+                content3 = userShareService.getContentByType(3);
+                userBasic = userBasicService.getUserById(userId);
+
+                model2.addObject("content1", content1);
+                model2.addObject("content2", content2);
+                model2.addObject("content3", content3);
+                model2.addObject("userBasic",userBasic);
+
+                return model2;
+            }
+
+        }catch (Exception e){
+            log.error("【精英分享获取信息失败】");
+        }
+
+        model.addObject("content1", content1);
+        model.addObject("content2", content2);
+        model.addObject("content3", content3);
+        model.addObject("userBasic",userBasic);
+        return model;
+    }
+
 }

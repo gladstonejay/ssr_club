@@ -181,6 +181,13 @@
     ORDER BY id DESC ;
   </select>
 
+  <select id="getContentByTypeAndWord"  resultMap="BaseResultMap">
+    SELECT * from content
+    WHERE type= #{type}
+    AND title LIKE CONCAT('%',#{word},'%')
+    ORDER BY id DESC ;
+  </select>
+
   <select id="getContentByTypeAndItem" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     SELECT * from content
     WHERE type= #{type}

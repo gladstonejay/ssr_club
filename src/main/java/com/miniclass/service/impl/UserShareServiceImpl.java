@@ -29,6 +29,19 @@ public class UserShareServiceImpl implements UserShareService{
     }
 
     /**
+     * 搜索结果
+     * @param type
+     * @return
+     */
+    public List<Content> getContentByTypeAndWord(Integer type, String word){
+
+        return contentDao.getContentByTypeAndWord(type, word);
+    }
+
+
+
+
+    /**
      * 获取某一个类别的某个数据
      * @param type
      * @param item
@@ -38,4 +51,6 @@ public class UserShareServiceImpl implements UserShareService{
 
         return contentDao.getContentByTypeAndItem(type,item);
     }
+
+
 }

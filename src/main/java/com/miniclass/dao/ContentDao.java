@@ -28,6 +28,15 @@ public interface ContentDao {
      */
     public List<Content> getContentByType(Integer type);
 
+
+    /**
+     * 搜索结果
+     * @param type
+     * @return
+     */
+    public List<Content> getContentByTypeAndWord(@Param("type")Integer type, @Param("word")String word);
+
+
     /**
      * 获取某一个类别的某个数据
      * @param type

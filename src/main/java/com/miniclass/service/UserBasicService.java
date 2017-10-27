@@ -43,5 +43,12 @@ public interface UserBasicService {
 
     public int updateUserType4Info(String userId,String realName,String pro,String city,String county,String location);
 
+    /**
+     * 搜索栏获取匹配记录
+     * @param word
+     * @return
+     */
+    public List<VideoInfo> getSearchVideo(String word);
+
 
 }

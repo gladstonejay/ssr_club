@@ -25,4 +25,6 @@ public interface VideoInfoDao {
     List<VideoInfo> selectAllDoneVideo(@Param("type")String type);
 
     VideoInfo getVideoById(Integer videoId);
+
+    List<VideoInfo> getSearchVideo(@Param("word")String word);
 }

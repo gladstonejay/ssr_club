@@ -67,12 +67,12 @@
                 </div>
             </div>
             <div class="buttons-tab">
-                <a href="#tab1" class="tab-link active button">行业动态</a>
-                <a href="#tab2" class="tab-link button">品牌中心</a>
+                <a href="#tab1" class="tab-link  button">行业动态</a>
+                <a href="#tab2" class="tab-link active button">品牌中心</a>
                 <a href="#tab3" class="tab-link button">完美门店</a>
             </div>
             <div class="tabs">
-            <div id="tab1" class="tab active">
+            <div id="tab1" class="tab">
                 <%--简介图--%>
                 <div class="card demo-card-header-pic">
                     <div valign="bottom" class="card-header color-white no-border no-padding">
@@ -119,7 +119,7 @@
                     </div>
                 </c:forEach>
             </div>
-            <div id="tab2" class="tab">
+            <div id="tab2" class="tab active">
                 <%--简介图--%>
                 <div class="card demo-card-header-pic">
                     <div valign="bottom" class="card-header color-white no-border no-padding">
