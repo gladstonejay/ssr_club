@@ -81,10 +81,13 @@
                     <%--搜索--%>
                         <form class="zform zform-radius" action="/classLearn/search.j" method="post" id="form1">
                     <div class="content-padded">
-                        <div class="searchbar">
-                            <div class="search-input">
+                        <div class="searchbar row">
+                            <div class="search-input col-80">
                                 <label class="icon icon-search" for="search"></label>
                                 <input type="text" id='search' name='search' placeholder='请输入关键字......'/>
+                            </div>
+                            <div class="col-20">
+                            <input type="submit" class="button button-fill col-20" value="搜索">
                             </div>
                         </div>
                     </div>
